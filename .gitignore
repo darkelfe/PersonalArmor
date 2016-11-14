@@ -1,0 +1,30 @@
+# VIM
+*.sw*
+
+# JAVA
+*.class
+*.jar
+*.war
+*.ear
+
+# Eclipse
+.classpath
+.project
+.settings/
+
+# Minecraft
+bin/
+config/
+logs/
+mods/
+resourcepacks/
+saves/
+world/
+
+banned-ips.json
+banned-players.json
+eula.txt
+ops.json
+server.properties
+usercache.json
+whitelist.json

@@ -1,0 +1,17 @@
+[
+	{
+		"modid": "personalarmor",
+		"name": "Personal Armor",
+		"description": "Not a simply armor : powerful and modular",
+		"version": "${version}",
+		"mcversion": "${mcversion}",
+		"logoFile": "",
+		"url": "https://github.com/darkelfe/PersonalArmor",
+		"updateUrl": "https://github.com/darkelfe/PersonalArmor",
+		"authorList": ["Julien Rosset"],
+		"credits": "",
+		"parent": "",
+		"screenshots": [],
+		"dependencies": []
+	}
+]

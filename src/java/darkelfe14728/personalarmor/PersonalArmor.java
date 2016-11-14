@@ -35,7 +35,6 @@ public class PersonalArmor
 
     @Instance
     public static PersonalArmor      instance        = new PersonalArmor();
-
     @SidedProxy(
         clientSide = "darkelfe14728.personalarmor.utils.proxy.CombinedClientProxy",
         serverSide = "darkelfe14728.personalarmor.utils.proxy.DedicatedServerProxy")
@@ -55,13 +54,11 @@ public class PersonalArmor
 
         proxy.preInit(event);
     }
-
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
         proxy.init(event);
     }
-
     @EventHandler
     public void postInit(FMLPostInitializationEvent event)
     {

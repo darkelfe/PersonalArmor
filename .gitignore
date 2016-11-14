@@ -26,6 +26,8 @@ banned-ips.json
 banned-players.json
 eula.txt
 ops.json
+options.txt
 server.properties
 usercache.json
+usernamecache.json
 whitelist.json

@@ -1,6 +1,7 @@
 package darkelfe14728.personalarmor.utils;
 
 import net.minecraft.block.Block;
+import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.registry.GameRegistry;
 import darkelfe14728.personalarmor.utils.network.AbstractMessageHandler;
@@ -24,6 +25,16 @@ public abstract class Registry
     {
         LogHelper.info("Register block : " + block.getUnlocalizedName());
         GameRegistry.registerBlock(block, block.getUnlocalizedName());
+    }
+
+    public static void registerRecipe(ItemStack output, Object... params)
+    {
+        GameRegistry.addRecipe(output, params);
+    }
+    public static void registerBlockRecipe(Block output, Object... params)
+    {
+        LogHelper.info("Register recipe : block " + output.getUnlocalizedName());
+        registerRecipe(new ItemStack(output), params);
     }
 
     /**

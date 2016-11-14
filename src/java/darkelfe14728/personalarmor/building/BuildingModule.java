@@ -1,8 +1,11 @@
 package darkelfe14728.personalarmor.building;
 
+import net.minecraft.block.Block;
+import net.minecraft.init.Items;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import darkelfe14728.personalarmor.utils.DyeColor;
 import darkelfe14728.personalarmor.utils.LogHelper;
 import darkelfe14728.personalarmor.utils.Registry;
 import darkelfe14728.personalarmor.utils.proxy.AbstractModule;
@@ -20,6 +23,11 @@ public class BuildingModule
 
     public static final BuildingModule instance    = new BuildingModule();
 
+    public static class Blocks
+    {
+        public static final Block designTable = new DesignTable();
+    }
+
     @Override
     public String getPrefix()
     {
@@ -31,7 +39,7 @@ public class BuildingModule
     {
         LogHelper.startBlock(MODULE_NAME);
 
-        Registry.registerBlock(new DesignTable());
+        Registry.registerBlock(Blocks.designTable);
 
         LogHelper.stopBlock();
     }
@@ -39,6 +47,14 @@ public class BuildingModule
     public void init(FMLInitializationEvent event)
     {
         LogHelper.startBlock(MODULE_NAME);
+
+        Registry.registerBlockRecipe(Blocks.designTable, new Object[] {
+            "FI", "C ",
+            'F', Items.feather,
+            'I', DyeColor.BLACK.getItem(),
+            'C', net.minecraft.init.Blocks.crafting_table
+        });
+
         LogHelper.stopBlock();
     }
     @Override

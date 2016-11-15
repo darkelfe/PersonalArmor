@@ -4,9 +4,13 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import darkelfe14728.personalarmor.PersonalArmorTab;
 import darkelfe14728.personalarmor.utils.BlockFace;
+import darkelfe14728.personalarmor.utils.InventoryHelper;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
@@ -82,5 +86,22 @@ public class DesignTable
     public TileEntity createNewTileEntity(World world, int metadata)
     {
         return new DesignTableTE();
+    }
+
+    @Override
+    public void breakBlock(World world, int x, int y, int z, Block block, int metadata)
+    {
+        DesignTableTE tile = (DesignTableTE)world.getTileEntity(x, y, z);
+        InventoryHelper.dropInWorld(world, x, y, z, tile);
+        
+        super.breakBlock(world, x, y, z, block, metadata);
+    }
+    @Override
+    public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase placer, ItemStack stack)
+    {
+        if(stack.hasDisplayName())
+            ((DesignTableTE)world.getTileEntity(x, y, z)).setCustomName(stack.getDisplayName());
+            
+        super.onBlockPlacedBy(world, x, y, z, placer, stack);
     }
 }

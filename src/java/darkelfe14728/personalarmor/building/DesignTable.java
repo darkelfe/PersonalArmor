@@ -4,19 +4,21 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import darkelfe14728.personalarmor.PersonalArmorTab;
 import darkelfe14728.personalarmor.utils.BlockFace;
-import net.minecraft.block.Block;
+import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
+import net.minecraft.world.World;
 
 
 /**
  * @author Julien Rosset
  * 
- *         Design table : choose the armor part to create.
+ * Design Table's block : choose the armor part to create.
  */
 public class DesignTable
-    extends Block
+    extends BlockContainer
 {
     public static final String UNLOCALIZED_NAME = "designTable";
 
@@ -74,5 +76,11 @@ public class DesignTable
     {
         this.textures[TextureFace.TOP.getIndex()] = register.registerIcon(this.textureName + "_top");
         this.textures[TextureFace.OTHER.getIndex()] = register.registerIcon(this.textureName + "_other");
+    }
+
+    @Override
+    public TileEntity createNewTileEntity(World world, int metadata)
+    {
+        return new DesignTableTE();
     }
 }

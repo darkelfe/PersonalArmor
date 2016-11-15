@@ -39,7 +39,7 @@ public class BuildingModule
     {
         LogHelper.startBlock(MODULE_NAME);
 
-        Registry.registerBlock(Blocks.designTable);
+        Registry.registerBlockWithTileEntity(Blocks.designTable, DesignTableTE.class);
 
         LogHelper.stopBlock();
     }

@@ -2,6 +2,7 @@ package darkelfe14728.personalarmor.building;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import darkelfe14728.personalarmor.PersonalArmor;
 import darkelfe14728.personalarmor.PersonalArmorTab;
 import darkelfe14728.personalarmor.utils.BlockFace;
 import darkelfe14728.personalarmor.utils.InventoryHelper;
@@ -10,6 +11,7 @@ import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
@@ -28,11 +30,10 @@ public class DesignTable
 
     public enum TextureFace
     {
-            TOP(0),
-            OTHER(1);
+        TOP(0),
+        OTHER(1);
 
-        private int index;
-
+        private final int index;
         private TextureFace(int index)
         {
             this.index = index;
@@ -103,5 +104,17 @@ public class DesignTable
             ((DesignTableTE)world.getTileEntity(x, y, z)).setCustomName(stack.getDisplayName());
             
         super.onBlockPlacedBy(world, x, y, z, placer, stack);
+    }
+
+    @Override
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX, float hitY, float hitZ)
+    {
+        if(!world.isRemote)
+        {
+            player.openGui(PersonalArmor.instance, DesignTableGUI.GUI_ID, world, x, y, z);
+            return true;
+        }
+        
+        return super.onBlockActivated(world, x, y, z, player, side, hitX, hitY, hitZ);
     }
 }

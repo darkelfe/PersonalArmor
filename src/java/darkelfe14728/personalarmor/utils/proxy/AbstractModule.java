@@ -22,6 +22,10 @@ public abstract class AbstractModule
     {
         return PersonalArmor.MOD_ID + ":" + this.getPrefix() + "/";
     }
+    public String getGuiTexturePrefix()
+    {
+        return PersonalArmor.MOD_ID + ":textures/gui/" + this.getPrefix() + "/";
+    }
 
     public abstract void preInit(FMLPreInitializationEvent event);
     public abstract void init(FMLInitializationEvent event);

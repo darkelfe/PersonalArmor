@@ -1,8 +1,8 @@
 package darkelfe14728.personalarmor.building;
 
+import darkelfe14728.personalarmor.utils.custom.IInventoryCustom;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -15,16 +15,23 @@ import net.minecraft.tileentity.TileEntity;
  * Design Table's Tile Entity
  * Store design table inventory :
  *  - Paper (input)
+ *  
+ * @see DesignTable
  */
 public class DesignTableTE
     extends TileEntity
-    implements IInventory
+    implements IInventoryCustom
 {
+    public static final int INVENTORY_SIZE = 2;
+    
     private static final String UNLOCALIZED_NAME = "container." + BuildingModule.instance.getNamePrefix() + "designTable";
     
     private static final String TAG_INVENTORY      = "Items";
     private static final String TAG_INVENTORY_SLOT = "Slot";
     private static final String TAG_CUSTOMNAME     = "CustomName";
+    
+    private static final int SLOT_INPUT_PAPER = 0;
+    private static final int SLOT_OUTPUT      = 1;
 
     /**
      * The block custom name.
@@ -64,12 +71,26 @@ public class DesignTableTE
     @Override
     public int getSizeInventory()
     {
-        return 1;
+        return INVENTORY_SIZE;
     }
     @Override
     public int getInventoryStackLimit()
     {
         return 64;
+    }
+    @Override
+    public int getSlotStackLimit(int slot)
+    {
+        switch(slot)
+        {
+            case SLOT_INPUT_PAPER:
+                return this.getInventoryStackLimit();
+                
+            case SLOT_OUTPUT:
+                return 1;
+        }
+        
+        return this.getInventoryStackLimit();
     }
     
     @Override
@@ -144,8 +165,11 @@ public class DesignTableTE
     {        
         switch(slot)
         {
-            case 1:
+            case SLOT_INPUT_PAPER:
                 return stack.getItem() == Items.paper;
+                
+            case SLOT_OUTPUT:
+                return false;
         }
         
         return false;
@@ -179,12 +203,17 @@ public class DesignTableTE
         NBTTagList list = new NBTTagList();
         for(int slot = 0; slot < this.getSizeInventory(); slot++)
         {
-            NBTTagCompound elem = new NBTTagCompound();
-            elem.setByte(TAG_INVENTORY_SLOT, (byte)slot);
-            this.getStackInSlot(slot).writeToNBT(elem);
-            
-            list.appendTag(elem);
+            if(this.getStackInSlot(slot) != null)
+            {
+                NBTTagCompound elem = new NBTTagCompound();
+                elem.setByte(TAG_INVENTORY_SLOT, (byte)slot);
+                this.getStackInSlot(slot).writeToNBT(elem);
+                
+                list.appendTag(elem);
+            }
         }
         compound.setTag(TAG_INVENTORY, list);
     }
+
+    
 }

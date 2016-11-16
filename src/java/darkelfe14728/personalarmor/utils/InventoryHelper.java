@@ -22,7 +22,7 @@ public abstract class InventoryHelper
     
     public enum Constants
     {
-        HOTBAR   (2, LINE_SIZE, 0                   , 16, 16, 2, 2),
+        HOTBAR   (1, LINE_SIZE,                    0, 16, 16, 2, 2),
         INVENTORY(3, LINE_SIZE, HOTBAR.SLOT_STOP + 1, 16, 16, 2, 2);
         
         /**

@@ -6,6 +6,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import darkelfe14728.personalarmor.utils.DyeColor;
+import darkelfe14728.personalarmor.utils.ExtractableList;
 import darkelfe14728.personalarmor.utils.LogHelper;
 import darkelfe14728.personalarmor.utils.Registry;
 import darkelfe14728.personalarmor.utils.proxy.AbstractModule;
@@ -18,12 +19,13 @@ import darkelfe14728.personalarmor.utils.proxy.AbstractModule;
 public class BuildingModule
     extends AbstractModule
 {
-    public static final String MODULE_ID   = "building";
-    public static final String MODULE_NAME = "Building";
+    public static final String         MODULE_ID   = "building";
+    public static final String         MODULE_NAME = "Building";
 
-    public static final BuildingModule instance = new BuildingModule();
+    public static final BuildingModule instance    = new BuildingModule();
 
     public static class Blocks
+        extends ExtractableList
     {
         public static final Block designTable = new DesignTable();
     }
@@ -31,13 +33,13 @@ public class BuildingModule
     @Override
     public String getPrefix()
     {
-        return MODULE_ID;
+        return BuildingModule.MODULE_ID;
     }
 
     @Override
     public void preInit(FMLPreInitializationEvent event)
     {
-        LogHelper.startBlock(MODULE_NAME);
+        LogHelper.startBlock(BuildingModule.MODULE_NAME);
 
         Registry.registerBlockWithTileEntity(Blocks.designTable, DesignTableTE.class);
 
@@ -46,21 +48,17 @@ public class BuildingModule
     @Override
     public void init(FMLInitializationEvent event)
     {
-        LogHelper.startBlock(MODULE_NAME);
+        LogHelper.startBlock(BuildingModule.MODULE_NAME);
 
-        Registry.registerBlockRecipe(Blocks.designTable, new Object[] {
-            "FI", "C ",
-            'F', Items.feather,
-            'I', DyeColor.BLACK.getItem(),
-            'C', net.minecraft.init.Blocks.crafting_table
-        });
+        Registry.registerBlockRecipe(Blocks.designTable, new Object[] {"FI", "C ", 'F', Items.feather, 'I', DyeColor.BLACK.getItem(), 'C', net.minecraft.init.Blocks.crafting_table});
 
         LogHelper.stopBlock();
     }
     @Override
     public void postInit(FMLPostInitializationEvent event)
     {
-        LogHelper.startBlock(MODULE_NAME);
+        LogHelper.startBlock(BuildingModule.MODULE_NAME);
+        Registry.registerMessage(DesignTableGuiPacket.class);
         LogHelper.stopBlock();
     }
 }

@@ -1,10 +1,10 @@
 package darkelfe14728.personalarmor;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 
 /**
@@ -24,7 +24,7 @@ public class PersonalArmorTab
      */
     public PersonalArmorTab()
     {
-        super(UNLOCALIZED_NAME);
+        super(PersonalArmorTab.UNLOCALIZED_NAME);
     }
 
     /*

@@ -2,9 +2,15 @@ package darkelfe14728.personalarmor.armor.part;
 
 /**
  * @author Julien Rosset
- *
- * Armor left hand part.
+ * 
+ *         Armor left hand part.
  */
 public class HandLeft
     extends AbstractHand
-{}
+{
+    @Override
+    public String getTagName()
+    {
+        return super.getTagName() + "_left";
+    }
+}

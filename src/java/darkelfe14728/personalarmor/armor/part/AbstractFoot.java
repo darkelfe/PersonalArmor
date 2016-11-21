@@ -2,12 +2,21 @@ package darkelfe14728.personalarmor.armor.part;
 
 /**
  * @author Julien Rosset
- *
- * Armor (abstract) foot part.
+ * 
+ *         Armor (abstract) foot part.
  */
 public abstract class AbstractFoot
     implements IArmorPart
 {
+    /**
+     * @see darkelfe14728.personalarmor.armor.part.IArmorPart#getTagName()
+     */
+    @Override
+    public String getTagName()
+    {
+        return "foot";
+    }
+
     /**
      * @see darkelfe14728.personalarmor.armor.part.IArmorPart#getBaseFactor()
      */

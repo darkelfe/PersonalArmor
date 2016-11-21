@@ -1,5 +1,8 @@
 itemGroup.personalarmor=Personal Armor
 
+item.armor.schematic.name=Schéma d'armure
+item.armor.schematic.hand_right.name=Schéma de main droite d'armure
+
 tile.building.designTable.name=Table à dessin
 
-container.building.designTable.name=Table à dessin
+container.building.designTable=Table à dessin

@@ -1,6 +1,6 @@
 /**
  * @author Julien Rosset
- *
- * Root package.
+ * 
+ *         Root package.
  */
 package darkelfe14728.personalarmor;

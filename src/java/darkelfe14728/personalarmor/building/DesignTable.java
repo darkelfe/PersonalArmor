@@ -1,11 +1,5 @@
 package darkelfe14728.personalarmor.building;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import darkelfe14728.personalarmor.PersonalArmor;
-import darkelfe14728.personalarmor.PersonalArmorTab;
-import darkelfe14728.personalarmor.utils.BlockFace;
-import darkelfe14728.personalarmor.utils.InventoryHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -16,12 +10,18 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import darkelfe14728.personalarmor.PersonalArmor;
+import darkelfe14728.personalarmor.PersonalArmorTab;
+import darkelfe14728.personalarmor.utils.BlockFace;
+import darkelfe14728.personalarmor.utils.InventoryHelper;
 
 
 /**
  * @author Julien Rosset
  * 
- * Design Table's block : choose the armor part to create.
+ *         Design Table's block : choose the armor part to create.
  */
 public class DesignTable
     extends BlockContainer
@@ -30,10 +30,11 @@ public class DesignTable
 
     public enum TextureFace
     {
-        TOP(0),
-        OTHER(1);
+            TOP(0),
+            OTHER(1);
 
         private final int index;
+
         private TextureFace(int index)
         {
             this.index = index;
@@ -54,12 +55,12 @@ public class DesignTable
     {
         super(Material.wood);
 
-        this.setBlockName(BuildingModule.instance.getNamePrefix() + UNLOCALIZED_NAME);
-        this.setBlockTextureName(BuildingModule.instance.getTexturePrefix() + UNLOCALIZED_NAME);
+        this.setBlockName(BuildingModule.instance.getNamePrefix() + DesignTable.UNLOCALIZED_NAME);
+        this.setBlockTextureName(BuildingModule.instance.getTexturePrefix() + DesignTable.UNLOCALIZED_NAME);
         this.setCreativeTab(PersonalArmorTab.instance);
         this.setHardness(1.0F);
         this.setResistance(10F);
-        this.setStepSound(soundTypeWood);
+        this.setStepSound(Block.soundTypeWood);
         this.setHarvestLevel("axe", 1);
     }
 
@@ -73,7 +74,7 @@ public class DesignTable
         else
             face = TextureFace.OTHER;
 
-        return textures[face.getIndex()];
+        return this.textures[face.getIndex()];
     }
     @Override
     @SideOnly(Side.CLIENT)
@@ -94,7 +95,7 @@ public class DesignTable
     {
         DesignTableTE tile = (DesignTableTE)world.getTileEntity(x, y, z);
         InventoryHelper.dropInWorld(world, x, y, z, tile);
-        
+
         super.breakBlock(world, x, y, z, block, metadata);
     }
     @Override
@@ -102,7 +103,7 @@ public class DesignTable
     {
         if(stack.hasDisplayName())
             ((DesignTableTE)world.getTileEntity(x, y, z)).setCustomName(stack.getDisplayName());
-            
+
         super.onBlockPlacedBy(world, x, y, z, placer, stack);
     }
 
@@ -111,10 +112,10 @@ public class DesignTable
     {
         if(!world.isRemote)
         {
-            player.openGui(PersonalArmor.instance, DesignTableGUI.GUI_ID, world, x, y, z);
+            player.openGui(PersonalArmor.instance, DesignTableGui.GUI_ID, world, x, y, z);
             return true;
         }
-        
+
         return super.onBlockActivated(world, x, y, z, player, side, hitX, hitY, hitZ);
     }
 }

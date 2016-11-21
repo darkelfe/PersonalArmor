@@ -1,6 +1,6 @@
 /**
  * @author Julien Rosset
  * 
- * Armor modules.
+ *         Armor modules.
  */
 package darkelfe14728.personalarmor.armor.module;

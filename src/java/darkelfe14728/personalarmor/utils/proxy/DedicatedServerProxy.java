@@ -4,10 +4,11 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
+
 /**
  * @author Julien Rosset
- *
- * Dedicated server (standalone) part of proxies.
+ * 
+ *         Dedicated server (standalone) part of proxies.
  */
 public class DedicatedServerProxy
     extends CommonProxy

@@ -10,8 +10,8 @@ import net.minecraft.world.World;
 
 /**
  * @author Julien Rosset
- *
- * Utilities functions.
+ * 
+ *         Utilities functions.
  */
 public abstract class InventoryHelper
 {
@@ -19,12 +19,12 @@ public abstract class InventoryHelper
      * Number of slot in one line.
      */
     public static final int LINE_SIZE = 9;
-    
+
     public enum Constants
     {
-        HOTBAR   (1, LINE_SIZE,                    0, 16, 16, 2, 2),
-        INVENTORY(3, LINE_SIZE, HOTBAR.SLOT_STOP + 1, 16, 16, 2, 2);
-        
+            HOTBAR(1, InventoryHelper.LINE_SIZE, 0, 16, 16, 2, 2),
+            INVENTORY(3, InventoryHelper.LINE_SIZE, HOTBAR.SLOT_STOP + 1, 16, 16, 2, 2);
+
         /**
          * Number of lines.
          */
@@ -33,7 +33,7 @@ public abstract class InventoryHelper
          * Number of columns.
          */
         public final int NB_COLUMNS;
-       
+
         /**
          * Start slot.
          */
@@ -42,7 +42,7 @@ public abstract class InventoryHelper
          * Stop / end slot.
          */
         public final int SLOT_STOP;
-       
+
         /**
          * Slot width.
          */
@@ -51,7 +51,7 @@ public abstract class InventoryHelper
          * Slot height
          */
         public final int SLOT_HEIGHT;
-       
+
         /**
          * Horizontal space between two slots.
          */
@@ -60,7 +60,7 @@ public abstract class InventoryHelper
          * Vertical space between two slots.
          */
         public final int SLOT_SPACE_V;
-       
+
         /**
          * Horizontal spacing between two slots.
          */
@@ -69,51 +69,56 @@ public abstract class InventoryHelper
          * Vertical spacing between two slots.
          */
         public final int SLOT_OFFSET_V;
-       
+
         private Constants(int lines, int columns, int start, int width, int height, int space_h, int space_v)
         {
-            this.NB_LINES   = lines;
+            this.NB_LINES = lines;
             this.NB_COLUMNS = columns;
 
             this.SLOT_START = start;
-            this.SLOT_STOP  = this.SLOT_START + (this.NB_LINES * this.NB_COLUMNS) - 1;
+            this.SLOT_STOP = this.SLOT_START + (this.NB_LINES * this.NB_COLUMNS) - 1;
 
-            this.SLOT_WIDTH  = width;
+            this.SLOT_WIDTH = width;
             this.SLOT_HEIGHT = height;
 
             this.SLOT_SPACE_H = space_h;
             this.SLOT_SPACE_V = space_v;
 
-            this.SLOT_OFFSET_H = this.SLOT_WIDTH  + this.SLOT_SPACE_H;
+            this.SLOT_OFFSET_H = this.SLOT_WIDTH + this.SLOT_SPACE_H;
             this.SLOT_OFFSET_V = this.SLOT_HEIGHT + this.SLOT_SPACE_V;
         }
     }
-    
+
     /**
      * Drop an item stack in the world.
      * 
-     * @param world     The world.
-     * @param x         X coordinate of drop.
-     * @param y         Y coordinate of drop.
-     * @param z         Z coordinate of drop.
-     * @param stack     The item stack to drop.
+     * @param world
+     *            The world.
+     * @param x
+     *            X coordinate of drop.
+     * @param y
+     *            Y coordinate of drop.
+     * @param z
+     *            Z coordinate of drop.
+     * @param stack
+     *            The item stack to drop.
      */
     public static void dropInWorld(World world, double x, double y, double z, ItemStack stack)
     {
         Random rand = new Random();
-        
-        double offset_x = (double)(rand.nextFloat() * 0.8F + 0.1F);
-        double offset_y = (double)(rand.nextFloat() * 0.8F + 0.1F);
-        double offset_z = (double)(rand.nextFloat() * 0.8F + 0.1F);
 
-        while (stack.stackSize > 0)
+        double offset_x = rand.nextFloat() * 0.8F + 0.1F;
+        double offset_y = rand.nextFloat() * 0.8F + 0.1F;
+        double offset_z = rand.nextFloat() * 0.8F + 0.1F;
+
+        while(stack.stackSize > 0)
         {
             int nb = Math.min(rand.nextInt(21) + 10, stack.stackSize);
             stack.stackSize -= nb;
-            
+
             ItemStack spawn = stack.copy();
             spawn.stackSize = nb;
-            
+
             EntityItem entity = new EntityItem(world, x + offset_x, y + offset_y, z + offset_z, spawn);
 
             double f3 = 0.05D;
@@ -127,15 +132,20 @@ public abstract class InventoryHelper
      * Drop an generic inventory in the world.
      * NOTE : Item stacks are removed from inventory using IInventory.getStackInSlotOnClosing.
      * 
-     * @param world     The world.
-     * @param x         X coordinate of drop.
-     * @param y         Y coordinate of drop.
-     * @param z         Z coordinate of drop.
-     * @param stack     The inventory to drop.
+     * @param world
+     *            The world.
+     * @param x
+     *            X coordinate of drop.
+     * @param y
+     *            Y coordinate of drop.
+     * @param z
+     *            Z coordinate of drop.
+     * @param stack
+     *            The inventory to drop.
      */
     public static void dropInWorld(World world, double x, double y, double z, IInventory inventory)
     {
         for(int idx = 0; idx < inventory.getSizeInventory(); idx++)
-            dropInWorld(world, x, y, z, inventory.getStackInSlotOnClosing(idx));
+            InventoryHelper.dropInWorld(world, x, y, z, inventory.getStackInSlotOnClosing(idx));
     }
 }

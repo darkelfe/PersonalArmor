@@ -1,8 +1,8 @@
 package darkelfe14728.personalarmor.utils.network;
 
-import cpw.mods.fml.common.network.NetworkRegistry;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.relauncher.Side;
@@ -35,13 +35,17 @@ public class PacketDispatcher
      * @param messageClass
      *            Message class
      */
-    public static final <T extends IMessage> void registerMessage(Class<? extends AbstractMessageHandler<T>> handlerClass, Class<T> messageClass)
+    public static final <T extends IMessage> void registerMessage(Class<T> messageClass, Class<? extends AbstractMessageHandler<T>> handlerClass)
     {
         if(AbstractClientMessageHandler.class.isAssignableFrom(handlerClass) || AbstractBidirectionalMessageHandler.class.isAssignableFrom(handlerClass))
             PacketDispatcher.dispatcher.registerMessage(handlerClass, messageClass, PacketDispatcher.packetID++, Side.CLIENT);
 
         if(AbstractServerMessageHandler.class.isAssignableFrom(handlerClass) || AbstractBidirectionalMessageHandler.class.isAssignableFrom(handlerClass))
             PacketDispatcher.dispatcher.registerMessage(handlerClass, messageClass, PacketDispatcher.packetID++, Side.SERVER);
+    }
+    public static final <T extends AbstractMessageHandler<T>& IMessage> void registerMessage(Class<T> packet)
+    {
+        PacketDispatcher.registerMessage(packet, packet);
     }
 
     /*
@@ -59,7 +63,7 @@ public class PacketDispatcher
      */
     public static final void sendToPlayer(IMessage message, EntityPlayerMP player)
     {
-        dispatcher.sendTo(message, player);
+        PacketDispatcher.dispatcher.sendTo(message, player);
     }
     /**
      * Send a message to everyone.
@@ -69,7 +73,7 @@ public class PacketDispatcher
      */
     public static final void sendToAll(IMessage message)
     {
-        dispatcher.sendToAll(message);
+        PacketDispatcher.dispatcher.sendToAll(message);
     }
     /**
      * Send a message to everyone around a point.
@@ -81,7 +85,7 @@ public class PacketDispatcher
      */
     public static final void sendToAllAround(IMessage message, NetworkRegistry.TargetPoint point)
     {
-        dispatcher.sendToAllAround(message, point);
+        PacketDispatcher.dispatcher.sendToAllAround(message, point);
     }
     /**
      * Send a message to everyone around a point.
@@ -101,7 +105,7 @@ public class PacketDispatcher
      */
     public static final void sendToAllAround(IMessage message, int dimension, double x, double y, double z, double range)
     {
-        dispatcher.sendToAllAround(message, new NetworkRegistry.TargetPoint(dimension, x, y, z, range));
+        PacketDispatcher.dispatcher.sendToAllAround(message, new NetworkRegistry.TargetPoint(dimension, x, y, z, range));
     }
     /**
      * Send a message to everyone around a player.
@@ -115,7 +119,7 @@ public class PacketDispatcher
      */
     public static final void sendToAllAroundPlayer(IMessage message, EntityPlayer player, double range)
     {
-        sendToAllAround(message, player.worldObj.provider.dimensionId, player.posX, player.posY, player.posZ, range);
+        PacketDispatcher.sendToAllAround(message, player.worldObj.provider.dimensionId, player.posX, player.posY, player.posZ, range);
     }
     /**
      * Send a message to a specific dimension.
@@ -127,7 +131,7 @@ public class PacketDispatcher
      */
     public static final void sendToDimension(IMessage message, int dimension)
     {
-        dispatcher.sendToDimension(message, dimension);
+        PacketDispatcher.dispatcher.sendToDimension(message, dimension);
     }
     /**
      * Send a message to server side.
@@ -137,6 +141,6 @@ public class PacketDispatcher
      */
     public static final void sendToServer(IMessage message)
     {
-        dispatcher.sendToServer(message);
+        PacketDispatcher.dispatcher.sendToServer(message);
     }
 }

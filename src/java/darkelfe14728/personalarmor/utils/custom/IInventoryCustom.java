@@ -2,10 +2,11 @@ package darkelfe14728.personalarmor.utils.custom;
 
 import net.minecraft.inventory.IInventory;
 
+
 /**
  * @author Julien Rosset
- *
- * Custom inventory interface.
+ * 
+ *         Custom inventory interface.
  * 
  * @see SlotCustom
  */
@@ -13,7 +14,8 @@ public interface IInventoryCustom
     extends IInventory
 {
     /**
-     * @param slot  The slot.
+     * @param slot
+     *            The slot.
      * 
      * @return The stack limit for a particular slot.
      */

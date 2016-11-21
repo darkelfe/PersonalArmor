@@ -1,5 +1,8 @@
 itemGroup.personalarmor=Personal Armor
 
+item.armor.schematic.name=Armor schematic
+item.armor.schematic.hand_right.name=Hand right armor schematic
+
 tile.building.designTable.name=Design Table
 
-container.building.designTable.name=Design Table
+container.building.designTable=Design Table

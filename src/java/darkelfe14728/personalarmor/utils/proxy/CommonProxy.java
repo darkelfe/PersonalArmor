@@ -5,6 +5,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
+import darkelfe14728.personalarmor.armor.ArmorModule;
 import darkelfe14728.personalarmor.building.BuildingModule;
 
 
@@ -15,25 +16,25 @@ import darkelfe14728.personalarmor.building.BuildingModule;
  */
 public class CommonProxy
 {
-    private AbstractModule[] modules = {BuildingModule.instance};
+    private AbstractModule[] modules = {ArmorModule.instance, BuildingModule.instance};
 
     public void preInit(FMLPreInitializationEvent event)
     {
-        for(AbstractModule module : modules)
+        for(AbstractModule module : this.modules)
         {
             module.preInit(event);
         }
     }
     public void init(FMLInitializationEvent event)
     {
-        for(AbstractModule module : modules)
+        for(AbstractModule module : this.modules)
         {
             module.init(event);
         }
     }
     public void postInit(FMLPostInitializationEvent event)
     {
-        for(AbstractModule module : modules)
+        for(AbstractModule module : this.modules)
         {
             module.postInit(event);
         }

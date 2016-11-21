@@ -1,6 +1,7 @@
 package darkelfe14728.personalarmor.utils;
 
 import net.minecraft.block.Block;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
@@ -17,10 +18,21 @@ import darkelfe14728.personalarmor.utils.network.PacketDispatcher;
 public abstract class Registry
 {
     /**
+     * Register a new item.
+     * 
+     * @param item
+     *            The item to register.
+     */
+    public static void registerItem(Item item)
+    {
+        GameRegistry.registerItem(item, item.getUnlocalizedName());
+    }
+
+    /**
      * Register a new block
      * 
      * @param block
-     *            The block to register
+     *            The block to register.
      */
     public static void registerBlock(Block block)
     {
@@ -30,8 +42,10 @@ public abstract class Registry
     /**
      * Register a new tile entity (of an registered block).
      * 
-     * @param block         The block associated with tile entity.
-     * @param tile_entity   The tile entity class.
+     * @param block
+     *            The block associated with tile entity.
+     * @param tile_entity
+     *            The tile entity class.
      */
     public static void registerTileEntity(Block block, Class<? extends TileEntity> tile_entity)
     {
@@ -41,20 +55,24 @@ public abstract class Registry
     /**
      * Register a new block and its tile entity
      * 
-     * @param block         The block.
-     * @param tile_entity   The tile entity class.
+     * @param block
+     *            The block.
+     * @param tile_entity
+     *            The tile entity class.
      */
     public static void registerBlockWithTileEntity(Block block, Class<? extends TileEntity> tile_entity)
     {
-        registerBlock(block);
-        registerTileEntity(block, tile_entity);
+        Registry.registerBlock(block);
+        Registry.registerTileEntity(block, tile_entity);
     }
-    
+
     /**
      * Register a generic recipe.
      * 
-     * @param output    Output item stack.
-     * @param params    The recipe design.
+     * @param output
+     *            Output item stack.
+     * @param params
+     *            The recipe design.
      */
     public static void registerRecipe(ItemStack output, Object... params)
     {
@@ -63,13 +81,15 @@ public abstract class Registry
     /**
      * Register a recipe for a block.
      * 
-     * @param output    Output block.
-     * @param params    The recipe design.
+     * @param output
+     *            Output block.
+     * @param params
+     *            The recipe design.
      */
     public static void registerBlockRecipe(Block output, Object... params)
     {
         LogHelper.info("Register recipe : block " + output.getUnlocalizedName());
-        registerRecipe(new ItemStack(output), params);
+        Registry.registerRecipe(new ItemStack(output), params);
     }
 
     /**
@@ -80,8 +100,12 @@ public abstract class Registry
      * @param messageClass
      *            Message class
      */
-    public static <T extends IMessage> void registerMessage(Class<? extends AbstractMessageHandler<T>> handlerClass, Class<T> messageClass)
+    public static <T extends IMessage> void registerMessage(Class<T> messageClass, Class<? extends AbstractMessageHandler<T>> handlerClass)
     {
-        PacketDispatcher.registerMessage(handlerClass, messageClass);
+        PacketDispatcher.registerMessage(messageClass, handlerClass);
+    }
+    public static final <T extends AbstractMessageHandler<T>& IMessage> void registerMessage(Class<T> packet)
+    {
+        PacketDispatcher.registerMessage(packet);
     }
 }

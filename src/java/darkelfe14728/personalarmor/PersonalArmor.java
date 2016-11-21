@@ -53,18 +53,18 @@ public class PersonalArmor
         meta.authorList = PersonalArmor.MOD_AUTHORS;
         meta.credits = PersonalArmor.MOD_CREDITS;
 
-        proxy.preInit(event);
+        PersonalArmor.proxy.preInit(event);
     }
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
         NetworkRegistry.INSTANCE.registerGuiHandler(PersonalArmor.instance, new GuiHandler());
-        
-        proxy.init(event);
+
+        PersonalArmor.proxy.init(event);
     }
     @EventHandler
     public void postInit(FMLPostInitializationEvent event)
     {
-        proxy.postInit(event);
+        PersonalArmor.proxy.postInit(event);
     }
 }

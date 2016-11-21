@@ -27,6 +27,25 @@ public abstract class AbstractMessageHandler<T extends IMessage>
             return onServerMessage(PersonalArmor.proxy.getPlayer(context), message, context);
     }
 
+    /**
+     * Override to define reaction and response message to a client side message
+     * 
+     * @param player    The player (message target)
+     * @param message   The receive message
+     * @param context   The context
+     * 
+     * @return The response message (if any, else null)
+     */
     public abstract IMessage onClientMessage(EntityPlayer player, T message, MessageContext context);
+
+    /**
+     * Override to define reaction and response message to a server side message
+     * 
+     * @param player    The player (message target)
+     * @param message   The receive message
+     * @param context   The context
+     * 
+     * @return The response message (if any, else null)
+     */
     public abstract IMessage onServerMessage(EntityPlayer player, T message, MessageContext context);
 }

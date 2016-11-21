@@ -1,7 +1,22 @@
 itemGroup.personalarmor=Personal Armor
 
 item.armor.schematic.name=Armor schematic
-item.armor.schematic.hand_right.name=Hand right armor schematic
+item.armor.schematic.arm_left.name=Left arm armor schematic
+item.armor.schematic.arm_right.name=Right arm armor schematic
+item.armor.schematic.back.name=Back armor schematic
+item.armor.schematic.belt.name=Belt armor schematic
+item.armor.schematic.chest.name=Chest armor schematic
+item.armor.schematic.foot_left.name=Left foot armor schematic
+item.armor.schematic.foot_right.name=Right foot armor schematic
+item.armor.schematic.forearm_left.name=Left forearm armor schematic
+item.armor.schematic.forearm_right.name=Right forearm armor schematic
+item.armor.schematic.hand_left.name=Left hand armor schematic
+item.armor.schematic.hand_right.name=Right hand armor schematic
+item.armor.schematic.head.name=Head armor schematic
+item.armor.schematic.legdown_left.name=Left leg (down part) armor schematic
+item.armor.schematic.legdown_right.name=Right leg (down part) armor schematic
+item.armor.schematic.legup_left.name=Left leg (up part) armor schematic
+item.armor.schematic.legup_right.name=Right leg (up part) armor schematic
 
 tile.building.designTable.name=Design Table
 

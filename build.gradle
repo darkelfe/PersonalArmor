@@ -34,7 +34,7 @@ sourceSets
 archivesBaseName = "PersonalArmor"
 group="personalarmor"
 version = "0.0.1"
-minecraft.version = "1.7.10-10.13.4.1614"
+minecraft.version = "1.7.10-10.13.4.1614-1.7.10"
 
 processResources
 {

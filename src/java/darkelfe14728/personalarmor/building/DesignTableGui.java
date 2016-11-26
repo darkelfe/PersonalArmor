@@ -12,7 +12,6 @@ import darkelfe14728.personalarmor.armor.ArmorModule;
 import darkelfe14728.personalarmor.armor.ArmorSchematicItem;
 import darkelfe14728.personalarmor.armor.part.ArmorPartRegistry;
 import darkelfe14728.personalarmor.armor.part.IArmorPart;
-import darkelfe14728.personalarmor.utils.LogHelper;
 import darkelfe14728.personalarmor.utils.network.PacketDispatcher;
 
 
@@ -82,7 +81,6 @@ public class DesignTableGui
             IArmorPart part = ((DesignTableGuiButton<IArmorPart>)button).getObject();
             ItemStack output = ArmorSchematicItem.newItemStack(ArmorModule.Items.ArmorSchematic, part);
 
-            LogHelper.info((output == null ? "hoho" : "YES"));
             PacketDispatcher.sendToServer(new DesignTableGuiPacket(output));
         }
     }

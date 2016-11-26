@@ -8,7 +8,7 @@ import cpw.mods.fml.common.network.ByteBufUtils;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 import darkelfe14728.personalarmor.utils.LogHelper;
-import darkelfe14728.personalarmor.utils.network.AbstractBidirectionalMessageHandler;
+import darkelfe14728.personalarmor.utils.network.AbstractServerMessageHandler;
 
 
 /**
@@ -16,7 +16,7 @@ import darkelfe14728.personalarmor.utils.network.AbstractBidirectionalMessageHan
  * 
  */
 public class DesignTableGuiPacket
-    extends AbstractBidirectionalMessageHandler<DesignTableGuiPacket>
+    extends AbstractServerMessageHandler<DesignTableGuiPacket>
     implements IMessage
 {
     private ItemStack output;
@@ -43,13 +43,6 @@ public class DesignTableGuiPacket
     }
 
     @Override
-    public IMessage onClientMessage(EntityPlayer player, DesignTableGuiPacket message, MessageContext context)
-    {
-        LogHelper.info("Message on client-side !");
-        this.onMessage(player, message, context);
-        return null;
-    }
-    @Override
     public IMessage onServerMessage(EntityPlayer player, DesignTableGuiPacket message, MessageContext context)
     {
         LogHelper.info("Message on server-side !");
@@ -58,9 +51,7 @@ public class DesignTableGuiPacket
     }
 
     private void onMessage(EntityPlayer player, DesignTableGuiPacket message, MessageContext context)
-    {
-        LogHelper.info((message.output == null ? "aïe" : "cool"));
-        
+    {        
         Container container = player.openContainer;
         if(container instanceof DesignTableContainer)
             ((DesignTableContainer)container).setOuput(message.output);

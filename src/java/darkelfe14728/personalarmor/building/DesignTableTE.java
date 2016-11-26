@@ -41,7 +41,7 @@ public class DesignTableTE
     /**
      * Inventory's stacks.
      */
-    private ItemStack[]         inventory;
+    private final ItemStack[]         inventory;
 
     public DesignTableTE()
     {
@@ -135,15 +135,6 @@ public class DesignTableTE
             out = atSlot.splitStack(quantity);
 
         this.setInventorySlotContents(slot, atSlot);
-        if(slot == DesignTableTE.SLOT_OUTPUT)
-        {
-            ItemStack input = this.getStackInSlot(DesignTableTE.SLOT_INPUT_PAPER);
-            input.stackSize -= quantity;
-            if(input.stackSize <= 0)
-                input = null;
-
-            this.setInventorySlotContents(DesignTableTE.SLOT_INPUT_PAPER, input);
-        }
 
         this.markDirty();
         return out;

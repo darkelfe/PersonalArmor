@@ -9,8 +9,8 @@ public class HandRight
     extends AbstractHand
 {
     @Override
-    public String getTagName()
+    public String getName()
     {
-        return super.getTagName() + "_right";
+        return super.getName() + "_right";
     }
 }

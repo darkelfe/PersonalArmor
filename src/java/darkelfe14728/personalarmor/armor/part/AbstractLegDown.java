@@ -9,10 +9,10 @@ public abstract class AbstractLegDown
     implements IArmorPart
 {
     /**
-     * @see darkelfe14728.personalarmor.armor.part.IArmorPart#getTagName()
+     * @see darkelfe14728.personalarmor.armor.part.IArmorPart#getName()
      */
     @Override
-    public String getTagName()
+    public String getName()
     {
         return "legdown";
     }

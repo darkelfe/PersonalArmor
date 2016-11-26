@@ -28,10 +28,10 @@ public class DesignTable
 {
     public static final String UNLOCALIZED_NAME = "designTable";
 
-    public enum TextureFace
+    private enum TextureFace
     {
-            TOP(0),
-            OTHER(1);
+        TOP(0),
+        OTHER(1);
 
         private final int index;
 
@@ -45,8 +45,7 @@ public class DesignTable
             return this.index;
         }
     }
-
-    public IIcon[] textures = new IIcon[2];
+    private final IIcon[] textures = new IIcon[2];
 
     /**
      * New design table

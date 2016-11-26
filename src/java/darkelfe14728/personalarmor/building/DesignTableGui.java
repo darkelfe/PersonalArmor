@@ -10,6 +10,7 @@ import org.lwjgl.opengl.GL11;
 
 import darkelfe14728.personalarmor.armor.ArmorModule;
 import darkelfe14728.personalarmor.armor.ArmorSchematicItem;
+import darkelfe14728.personalarmor.armor.part.ArmorPartRegistry;
 import darkelfe14728.personalarmor.armor.part.IArmorPart;
 import darkelfe14728.personalarmor.utils.LogHelper;
 import darkelfe14728.personalarmor.utils.network.PacketDispatcher;
@@ -52,24 +53,24 @@ public class DesignTableGui
     {
         super.initGui();
 
-        this.buttonList.add(new DesignTableGuiButton<IArmorPart>(0, this.guiLeft + 70, this.guiTop + 7, 2, 1, ArmorModule.Parts.Head));
-        this.buttonList.add(new DesignTableGuiButton<IArmorPart>(1, this.guiLeft + 70, this.guiTop + 25, 1, 2, ArmorModule.Parts.Chest));
-        this.buttonList.add(new DesignTableGuiButton<IArmorPart>(2, this.guiLeft + 88, this.guiTop + 25, 1, 2, ArmorModule.Parts.Back));
-        this.buttonList.add(new DesignTableGuiButton<IArmorPart>(3, this.guiLeft + 70, this.guiTop + 61, 2, 1, ArmorModule.Parts.Belt));
+        this.buttonList.add(new DesignTableGuiButton<IArmorPart>(0, this.guiLeft + 70, this.guiTop + 7, 2, 1, ArmorPartRegistry.Head));
+        this.buttonList.add(new DesignTableGuiButton<IArmorPart>(1, this.guiLeft + 70, this.guiTop + 25, 1, 2, ArmorPartRegistry.Chest));
+        this.buttonList.add(new DesignTableGuiButton<IArmorPart>(2, this.guiLeft + 88, this.guiTop + 25, 1, 2, ArmorPartRegistry.Back));
+        this.buttonList.add(new DesignTableGuiButton<IArmorPart>(3, this.guiLeft + 70, this.guiTop + 61, 2, 1, ArmorPartRegistry.Belt));
 
-        this.buttonList.add(new DesignTableGuiButton<IArmorPart>(4, this.guiLeft + 52, this.guiTop + 25, 1, 1, ArmorModule.Parts.ArmLeft));
-        this.buttonList.add(new DesignTableGuiButton<IArmorPart>(5, this.guiLeft + 106, this.guiTop + 25, 1, 1, ArmorModule.Parts.ArmRight));
-        this.buttonList.add(new DesignTableGuiButton<IArmorPart>(6, this.guiLeft + 52, this.guiTop + 43, 1, 1, ArmorModule.Parts.ForearmLeft));
-        this.buttonList.add(new DesignTableGuiButton<IArmorPart>(7, this.guiLeft + 106, this.guiTop + 43, 1, 1, ArmorModule.Parts.ForearmRight));
-        this.buttonList.add(new DesignTableGuiButton<IArmorPart>(8, this.guiLeft + 52, this.guiTop + 61, 1, 1, ArmorModule.Parts.HandLeft));
-        this.buttonList.add(new DesignTableGuiButton<IArmorPart>(9, this.guiLeft + 106, this.guiTop + 61, 1, 1, ArmorModule.Parts.HandRight));
+        this.buttonList.add(new DesignTableGuiButton<IArmorPart>(4, this.guiLeft + 52, this.guiTop + 25, 1, 1, ArmorPartRegistry.ArmLeft));
+        this.buttonList.add(new DesignTableGuiButton<IArmorPart>(5, this.guiLeft + 106, this.guiTop + 25, 1, 1, ArmorPartRegistry.ArmRight));
+        this.buttonList.add(new DesignTableGuiButton<IArmorPart>(6, this.guiLeft + 52, this.guiTop + 43, 1, 1, ArmorPartRegistry.ForearmLeft));
+        this.buttonList.add(new DesignTableGuiButton<IArmorPart>(7, this.guiLeft + 106, this.guiTop + 43, 1, 1, ArmorPartRegistry.ForearmRight));
+        this.buttonList.add(new DesignTableGuiButton<IArmorPart>(8, this.guiLeft + 52, this.guiTop + 61, 1, 1, ArmorPartRegistry.HandLeft));
+        this.buttonList.add(new DesignTableGuiButton<IArmorPart>(9, this.guiLeft + 106, this.guiTop + 61, 1, 1, ArmorPartRegistry.HandRight));
 
-        this.buttonList.add(new DesignTableGuiButton<IArmorPart>(10, this.guiLeft + 70, this.guiTop + 79, 1, 1, ArmorModule.Parts.LegUpLeft));
-        this.buttonList.add(new DesignTableGuiButton<IArmorPart>(11, this.guiLeft + 88, this.guiTop + 79, 1, 1, ArmorModule.Parts.LegUpRight));
-        this.buttonList.add(new DesignTableGuiButton<IArmorPart>(12, this.guiLeft + 70, this.guiTop + 97, 1, 1, ArmorModule.Parts.LegDownLeft));
-        this.buttonList.add(new DesignTableGuiButton<IArmorPart>(13, this.guiLeft + 88, this.guiTop + 97, 1, 1, ArmorModule.Parts.LegDownRight));
-        this.buttonList.add(new DesignTableGuiButton<IArmorPart>(14, this.guiLeft + 70, this.guiTop + 115, 1, 1, ArmorModule.Parts.FootLeft));
-        this.buttonList.add(new DesignTableGuiButton<IArmorPart>(15, this.guiLeft + 88, this.guiTop + 115, 1, 1, ArmorModule.Parts.FootRight));
+        this.buttonList.add(new DesignTableGuiButton<IArmorPart>(10, this.guiLeft + 70, this.guiTop + 79, 1, 1, ArmorPartRegistry.LegUpLeft));
+        this.buttonList.add(new DesignTableGuiButton<IArmorPart>(11, this.guiLeft + 88, this.guiTop + 79, 1, 1, ArmorPartRegistry.LegUpRight));
+        this.buttonList.add(new DesignTableGuiButton<IArmorPart>(12, this.guiLeft + 70, this.guiTop + 97, 1, 1, ArmorPartRegistry.LegDownLeft));
+        this.buttonList.add(new DesignTableGuiButton<IArmorPart>(13, this.guiLeft + 88, this.guiTop + 97, 1, 1, ArmorPartRegistry.LegDownRight));
+        this.buttonList.add(new DesignTableGuiButton<IArmorPart>(14, this.guiLeft + 70, this.guiTop + 115, 1, 1, ArmorPartRegistry.FootLeft));
+        this.buttonList.add(new DesignTableGuiButton<IArmorPart>(15, this.guiLeft + 88, this.guiTop + 115, 1, 1, ArmorPartRegistry.FootRight));
     }
 
     @Override

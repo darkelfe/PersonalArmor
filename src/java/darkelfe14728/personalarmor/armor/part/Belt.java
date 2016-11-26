@@ -9,7 +9,7 @@ public class Belt
     implements IArmorPart
 {
     @Override
-    public String getTagName()
+    public String getName()
     {
         return "belt";
     }

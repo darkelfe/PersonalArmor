@@ -1,17 +1,20 @@
 package darkelfe14728.personalarmor.armor;
 
+import java.util.Hashtable;
 import java.util.List;
+import java.util.Map;
 
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.IIcon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import darkelfe14728.personalarmor.PersonalArmor;
 import darkelfe14728.personalarmor.PersonalArmorTab;
 import darkelfe14728.personalarmor.armor.part.IArmorPart;
-import darkelfe14728.personalarmor.utils.Utils;
 
 
 /**
@@ -22,34 +25,30 @@ import darkelfe14728.personalarmor.utils.Utils;
 public class ArmorSchematicItem
     extends Item
 {
+    public static final String UNLOCALIZED_NAME = "schematic";
+    
     public static final String NBT_GROUP = PersonalArmor.MOD_ID;
     public static final String NBT_PART  = "Part";
+    
+    private Map<String, IIcon> icons = null;
 
     public ArmorSchematicItem()
     {
         this.setMaxStackSize(1);
         this.setHasSubtypes(true);
         this.setCreativeTab(PersonalArmorTab.instance);
-        this.setUnlocalizedName(ArmorModule.instance.getNamePrefix() + "schematic");
+        
+        this.setUnlocalizedName(ArmorModule.instance.getNamePrefix() + UNLOCALIZED_NAME);
+        this.setTextureName(ArmorModule.instance.getTexturePrefix() + UNLOCALIZED_NAME);
     }
-
     @Override
     public String getUnlocalizedName(ItemStack stack)
     {
         String name = super.getUnlocalizedName(stack);
-
-        if(stack.hasTagCompound())
-        {
-            NBTTagCompound data = stack.getTagCompound();
-            if(data.hasKey(ArmorSchematicItem.NBT_GROUP))
-            {
-                data = data.getCompoundTag(ArmorSchematicItem.NBT_GROUP);
-                if(data.hasKey(ArmorSchematicItem.NBT_PART))
-                {
-                    name += "." + data.getString(ArmorSchematicItem.NBT_PART);
-                }
-            }
-        }
+        IArmorPart part = getArmorPart(stack);
+        
+        if(part != null)
+            name += "." + part.getName();
 
         return name;
     }
@@ -59,10 +58,42 @@ public class ArmorSchematicItem
     @SideOnly(Side.CLIENT)
     public void getSubItems(Item item, CreativeTabs tab, @SuppressWarnings("rawtypes") List itemList)
     {
-        for(IArmorPart part : Utils.getClassStaticElements(ArmorModule.Parts.class, IArmorPart.class))
+        for(IArmorPart part : ArmorModule.Parts.getValues())
             itemList.add(ArmorSchematicItem.newItemStack(item, part));
     }
 
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void registerIcons(IIconRegister register)
+    {
+        this.icons = new Hashtable<>(ArmorModule.Parts.size());
+        
+        for(IArmorPart part : ArmorModule.Parts.getValues())
+            this.icons.put(part.getName(), register.registerIcon(this.getIconString() + "_" + part.getName()));
+    }
+    @Override
+    @SideOnly(Side.CLIENT)
+    public IIcon getIconIndex(ItemStack stack)
+    {
+        return this.getIconFromItemStack(stack);
+    }
+    @Override
+    public IIcon getIcon(ItemStack stack, int pass)
+    {
+        return this.getIconFromItemStack(stack);
+    }
+    private IIcon getIconFromItemStack(ItemStack stack)
+    {
+        if(this.icons == null)
+            return null;
+        
+        IArmorPart part = getArmorPart(stack);
+        if(part == null)
+            return null;
+        
+        return this.icons.get(part.getName());
+    }
+    
     /**
      * Create a new ItemStack of ArmorSchematicItem.
      * 
@@ -84,12 +115,28 @@ public class ArmorSchematicItem
     {
         NBTTagCompound data = new NBTTagCompound();
         NBTTagCompound group = new NBTTagCompound();
-        group.setString(ArmorSchematicItem.NBT_PART, part.getTagName());
+        group.setString(ArmorSchematicItem.NBT_PART, part.getName());
         data.setTag(ArmorSchematicItem.NBT_GROUP, group);
 
         ItemStack stack = new ItemStack(item, quantity, damage);
         stack.setTagCompound(data);
 
         return stack;
+    }
+    
+    public static IArmorPart getArmorPart(ItemStack stack)
+    {
+        if(!stack.hasTagCompound())
+            return null;
+        
+        NBTTagCompound data = stack.getTagCompound();
+        if(!data.hasKey(ArmorSchematicItem.NBT_GROUP))
+            return null;
+        
+        data = data.getCompoundTag(ArmorSchematicItem.NBT_GROUP);
+        if(!data.hasKey(ArmorSchematicItem.NBT_PART))
+            return null;
+        
+        return ArmorModule.Parts.getValue(data.getString(ArmorSchematicItem.NBT_PART));
     }
 }

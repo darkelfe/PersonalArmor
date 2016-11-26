@@ -9,8 +9,8 @@ public class FootRight
     extends AbstractFoot
 {
     @Override
-    public String getTagName()
+    public String getName()
     {
-        return super.getTagName() + "_right";
+        return super.getName() + "_right";
     }
 }

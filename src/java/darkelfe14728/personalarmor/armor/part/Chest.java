@@ -9,7 +9,7 @@ public class Chest
     implements IArmorPart
 {
     @Override
-    public String getTagName()
+    public String getName()
     {
         return "chest";
     }

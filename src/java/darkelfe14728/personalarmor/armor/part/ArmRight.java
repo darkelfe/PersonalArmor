@@ -9,8 +9,8 @@ public class ArmRight
     extends AbstractArm
 {
     @Override
-    public String getTagName()
+    public String getName()
     {
-        return super.getTagName() + "_right";
+        return super.getName() + "_right";
     }
 }

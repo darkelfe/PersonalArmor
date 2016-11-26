@@ -9,7 +9,7 @@ public class Back
     implements IArmorPart
 {
     @Override
-    public String getTagName()
+    public String getName()
     {
         return "back";
     }

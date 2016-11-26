@@ -7,8 +7,8 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import darkelfe14728.personalarmor.utils.DyeColor;
 import darkelfe14728.personalarmor.utils.LogHelper;
-import darkelfe14728.personalarmor.utils.Registry;
 import darkelfe14728.personalarmor.utils.proxy.AbstractModule;
+import darkelfe14728.personalarmor.utils.registry.RegistryHelper;
 
 
 /**
@@ -39,7 +39,7 @@ public class BuildingModule
     {
         LogHelper.startBlock(BuildingModule.MODULE_NAME);
 
-        Registry.registerBlockWithTileEntity(Blocks.designTable, DesignTableTE.class);
+        RegistryHelper.registerBlockWithTileEntity(Blocks.designTable, DesignTableTE.class);
 
         LogHelper.stopBlock();
     }
@@ -48,7 +48,7 @@ public class BuildingModule
     {
         LogHelper.startBlock(BuildingModule.MODULE_NAME);
 
-        Registry.registerBlockRecipe(Blocks.designTable, new Object[] {"FI", "C ", 'F', Items.feather, 'I', DyeColor.BLACK.getItem(), 'C', net.minecraft.init.Blocks.crafting_table});
+        RegistryHelper.registerBlockRecipe(Blocks.designTable, new Object[] {"FI", "C ", 'F', Items.feather, 'I', DyeColor.BLACK.getItem(), 'C', net.minecraft.init.Blocks.crafting_table});
 
         LogHelper.stopBlock();
     }
@@ -56,7 +56,7 @@ public class BuildingModule
     public void postInit(FMLPostInitializationEvent event)
     {
         LogHelper.startBlock(BuildingModule.MODULE_NAME);
-        Registry.registerMessage(DesignTableGuiPacket.class);
+        RegistryHelper.registerMessage(DesignTableGuiPacket.class);
         LogHelper.stopBlock();
     }
 }

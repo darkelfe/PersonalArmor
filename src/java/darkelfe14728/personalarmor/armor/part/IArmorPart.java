@@ -1,7 +1,5 @@
 package darkelfe14728.personalarmor.armor.part;
 
-import darkelfe14728.personalarmor.armor.ArmorSchematicItem;
-
 
 /**
  * @author Julien Rosset
@@ -11,9 +9,9 @@ import darkelfe14728.personalarmor.armor.ArmorSchematicItem;
 public interface IArmorPart
 {
     /**
-     * @return NBT Tag value for {@link ArmorSchematicItem.NBT_PART}
+     * @return Part "name".
      */
-    public String getTagName();
+    public String getName();
 
     /**
      * @return Base value for item values (Space, Weight, Energy)

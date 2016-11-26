@@ -1,4 +1,4 @@
-package darkelfe14728.personalarmor.utils;
+package darkelfe14728.personalarmor.utils.registry;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -6,6 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.registry.GameRegistry;
+import darkelfe14728.personalarmor.utils.LogHelper;
 import darkelfe14728.personalarmor.utils.network.AbstractMessageHandler;
 import darkelfe14728.personalarmor.utils.network.PacketDispatcher;
 
@@ -15,7 +16,7 @@ import darkelfe14728.personalarmor.utils.network.PacketDispatcher;
  * 
  *         Global class for registration
  */
-public abstract class Registry
+public abstract class RegistryHelper
 {
     /**
      * Register a new item.
@@ -62,8 +63,8 @@ public abstract class Registry
      */
     public static void registerBlockWithTileEntity(Block block, Class<? extends TileEntity> tile_entity)
     {
-        Registry.registerBlock(block);
-        Registry.registerTileEntity(block, tile_entity);
+        RegistryHelper.registerBlock(block);
+        RegistryHelper.registerTileEntity(block, tile_entity);
     }
 
     /**
@@ -89,7 +90,7 @@ public abstract class Registry
     public static void registerBlockRecipe(Block output, Object... params)
     {
         LogHelper.info("Register recipe : block " + output.getUnlocalizedName());
-        Registry.registerRecipe(new ItemStack(output), params);
+        RegistryHelper.registerRecipe(new ItemStack(output), params);
     }
 
     /**

@@ -5,6 +5,7 @@ import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.StatCollector;
 
 import org.lwjgl.opengl.GL11;
 
@@ -25,15 +26,15 @@ import darkelfe14728.personalarmor.utils.network.PacketDispatcher;
 public class DesignTableGui
     extends GuiContainer
 {
-    public static final int     GUI_ID              = 0;
+    public static final int GUI_ID = 0;
 
-    public static final int     GUI_WIDTH           = 175;
-    public static final int     GUI_HEIGHT          = 222;
+    public static final int GUI_WIDTH  = 175;
+    public static final int GUI_HEIGHT = 222;
 
-    public static final int     GUI_INV_OFFSET_H    = 7;
-    public static final int     GUI_INV_OFFSET_V    = 138;
-    public static final int     GUI_HOTBAR_OFFSET_H = 7;
-    public static final int     GUI_HOTBAR_OFFSET_V = 196;
+    public static final int GUI_INV_OFFSET_H    = 7;
+    public static final int GUI_INV_OFFSET_V    = 138;
+    public static final int GUI_HOTBAR_OFFSET_H = 7;
+    public static final int GUI_HOTBAR_OFFSET_V = 196;
 
     private final DesignTableTE tile;
 
@@ -96,6 +97,7 @@ public class DesignTableGui
     protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
     {
         String title = this.tile.getInventoryName();
+        title = StatCollector.translateToLocal(title);
         this.fontRendererObj.drawString(title, 7, 7, 16777215);     // #FF FF FF
     }
 }

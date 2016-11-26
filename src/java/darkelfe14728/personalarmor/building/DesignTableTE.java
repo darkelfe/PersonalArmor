@@ -6,6 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
+import darkelfe14728.personalarmor.armor.ArmorModule;
 import darkelfe14728.personalarmor.utils.custom.IInventoryCustom;
 
 
@@ -165,7 +166,7 @@ public class DesignTableTE
         switch(slot)
         {
             case SLOT_INPUT_PAPER:
-                return stack.getItem() == Items.paper;
+                return stack.getItem() == Items.paper || stack.getItem() == ArmorModule.Items.ArmorSchematic;
 
             case SLOT_OUTPUT:
                 return false;

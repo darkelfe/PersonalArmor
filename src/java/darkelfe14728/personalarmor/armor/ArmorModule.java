@@ -5,7 +5,6 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import darkelfe14728.personalarmor.armor.part.IArmorPart;
-import darkelfe14728.personalarmor.utils.ExtractableList;
 import darkelfe14728.personalarmor.utils.LogHelper;
 import darkelfe14728.personalarmor.utils.Registry;
 import darkelfe14728.personalarmor.utils.proxy.AbstractModule;
@@ -24,7 +23,6 @@ public class ArmorModule
     public static final ArmorModule instance    = new ArmorModule();
 
     public static class Parts
-        extends ExtractableList
     {
         public static final IArmorPart ArmLeft      = new darkelfe14728.personalarmor.armor.part.ArmLeft();
         public static final IArmorPart ArmRight     = new darkelfe14728.personalarmor.armor.part.ArmRight();
@@ -44,7 +42,6 @@ public class ArmorModule
         public static final IArmorPart LegUpRight   = new darkelfe14728.personalarmor.armor.part.LegUpRight();
     }
     public static class Items
-        extends ExtractableList
     {
         public static final Item ArmorSchematic = new ArmorSchematicItem();
     }

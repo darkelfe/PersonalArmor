@@ -6,7 +6,6 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import darkelfe14728.personalarmor.utils.DyeColor;
-import darkelfe14728.personalarmor.utils.ExtractableList;
 import darkelfe14728.personalarmor.utils.LogHelper;
 import darkelfe14728.personalarmor.utils.Registry;
 import darkelfe14728.personalarmor.utils.proxy.AbstractModule;
@@ -25,7 +24,6 @@ public class BuildingModule
     public static final BuildingModule instance    = new BuildingModule();
 
     public static class Blocks
-        extends ExtractableList
     {
         public static final Block designTable = new DesignTable();
     }

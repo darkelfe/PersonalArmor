@@ -9,8 +9,9 @@ import net.minecraft.nbt.NBTTagCompound;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import darkelfe14728.personalarmor.PersonalArmor;
+import darkelfe14728.personalarmor.PersonalArmorTab;
 import darkelfe14728.personalarmor.armor.part.IArmorPart;
-import darkelfe14728.personalarmor.utils.ExtractableList;
+import darkelfe14728.personalarmor.utils.Utils;
 
 
 /**
@@ -27,6 +28,8 @@ public class ArmorSchematicItem
     public ArmorSchematicItem()
     {
         this.setMaxStackSize(1);
+        this.setHasSubtypes(true);
+        this.setCreativeTab(PersonalArmorTab.instance);
         this.setUnlocalizedName(ArmorModule.instance.getNamePrefix() + "schematic");
     }
 
@@ -56,7 +59,7 @@ public class ArmorSchematicItem
     @SideOnly(Side.CLIENT)
     public void getSubItems(Item item, CreativeTabs tab, @SuppressWarnings("rawtypes") List itemList)
     {
-        for(IArmorPart part : ExtractableList.getElements(IArmorPart.class))
+        for(IArmorPart part : Utils.getClassStaticElements(ArmorModule.Parts.class, IArmorPart.class))
             itemList.add(ArmorSchematicItem.newItemStack(item, part));
     }
 

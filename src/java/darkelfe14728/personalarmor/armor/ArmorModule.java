@@ -4,6 +4,7 @@ import net.minecraft.item.Item;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import darkelfe14728.personalarmor.armor.material.MaterialRegistry;
 import darkelfe14728.personalarmor.armor.part.ArmorPartRegistry;
 import darkelfe14728.personalarmor.utils.LogHelper;
 import darkelfe14728.personalarmor.utils.proxy.AbstractModule;
@@ -22,10 +23,12 @@ public class ArmorModule
 
     public static final ArmorModule instance    = new ArmorModule();
 
-    public static final ArmorPartRegistry Parts = new ArmorPartRegistry(); 
+    public static final ArmorPartRegistry Parts     = new ArmorPartRegistry(); 
+    public static final MaterialRegistry  Materials = new MaterialRegistry();
     public static class Items
     {
-        public static final Item ArmorSchematic = new ArmorSchematicItem();
+        public static final Item ArmorSchematicItem = new ArmorSchematicItem();
+        public static final Item ArmorItem          = new ArmorItem();
     }
 
     @Override
@@ -44,7 +47,8 @@ public class ArmorModule
     public void init(FMLInitializationEvent event)
     {
         LogHelper.startBlock(ArmorModule.MODULE_NAME);
-        RegistryHelper.registerItem(Items.ArmorSchematic);
+        RegistryHelper.registerItem(Items.ArmorSchematicItem);
+        RegistryHelper.registerItem(Items.ArmorItem);
         LogHelper.stopBlock();
     }
     @Override

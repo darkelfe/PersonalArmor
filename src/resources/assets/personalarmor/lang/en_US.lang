@@ -21,3 +21,5 @@ item.armor.schematic.legup_right.name=Right leg (up part) armor schematic
 tile.building.designTable.name=Design Table
 
 container.building.designTable=Design Table
+
+interface.material=Material

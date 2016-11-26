@@ -35,6 +35,11 @@ public class Leather
     }
 
     @Override
+    public int getAssemblingFactor()
+    {
+        return 10;
+    }
+    @Override
     public int getProtectionFactor()
     {
         return 10;

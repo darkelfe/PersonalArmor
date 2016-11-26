@@ -80,7 +80,7 @@ public class DesignTableGui
         {
             @SuppressWarnings("unchecked")
             IArmorPart part = ((DesignTableGuiButton<IArmorPart>)button).getObject();
-            ItemStack output = ArmorSchematicItem.newItemStack(ArmorModule.Items.ArmorSchematic, part);
+            ItemStack output = ArmorSchematicItem.newItemStack(ArmorModule.Items.ArmorSchematicItem, part);
 
             PacketDispatcher.sendToServer(new DesignTableGuiPacket(output));
         }

@@ -29,6 +29,10 @@ public interface IMaterial
     public int getSpaceFactor();
     
     /**
+     * @return Assembling factor (time)
+     */
+    public int getAssemblingFactor();
+    /**
      * @return Protection factor.
      */
     public int getProtectionFactor();

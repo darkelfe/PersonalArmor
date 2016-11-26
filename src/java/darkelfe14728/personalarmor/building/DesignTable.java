@@ -51,7 +51,7 @@ public class DesignTable
      * New design table
      */
     public DesignTable()
-    {
+    {        
         super(Material.wood);
 
         this.setBlockName(BuildingModule.instance.getNamePrefix() + DesignTable.UNLOCALIZED_NAME);

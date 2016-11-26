@@ -13,9 +13,10 @@ import darkelfe14728.personalarmor.utils.custom.IInventoryCustom;
 /**
  * @author Julien Rosset
  * 
- *         Design Table's Tile Entity
- *         Store design table inventory :
- *         - Paper (input)
+ * Design Table's Tile Entity
+ * Store design table inventory :
+ *  - Paper (input)
+ *  - Schematic (output)
  * 
  * @see DesignTable
  */
@@ -25,7 +26,7 @@ public class DesignTableTE
 {
     public static final int     INVENTORY_SIZE     = 2;
 
-    private static final String UNLOCALIZED_NAME   = "container." + BuildingModule.instance.getNamePrefix() + "designTable";
+    private static final String UNLOCALIZED_NAME   = "container." + BuildingModule.instance.getNamePrefix() + DesignTable.UNLOCALIZED_NAME;
 
     private static final String TAG_INVENTORY      = "Items";
     private static final String TAG_INVENTORY_SLOT = "Slot";
@@ -166,7 +167,7 @@ public class DesignTableTE
         switch(slot)
         {
             case SLOT_INPUT_PAPER:
-                return stack.getItem() == Items.paper || stack.getItem() == ArmorModule.Items.ArmorSchematic;
+                return stack.getItem() == Items.paper || stack.getItem() == ArmorModule.Items.ArmorSchematicItem;
 
             case SLOT_OUTPUT:
                 return false;

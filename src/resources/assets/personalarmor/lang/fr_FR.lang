@@ -21,3 +21,5 @@ item.armor.schematic.legup_right.name=Schéma de tibia droit d'armure
 tile.building.designTable.name=Table à dessin
 
 container.building.designTable=Table à dessin
+
+interface.material=Matériau

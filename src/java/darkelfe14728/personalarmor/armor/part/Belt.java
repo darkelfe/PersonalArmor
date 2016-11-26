@@ -22,4 +22,10 @@ public class Belt
     {
         return 80;
     }
+
+    @Override
+    public int getCraftingMaterialQuantity()
+    {
+        return 6;
+    }
 }

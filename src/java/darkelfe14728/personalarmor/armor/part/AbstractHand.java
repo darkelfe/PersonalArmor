@@ -25,4 +25,10 @@ public abstract class AbstractHand
     {
         return 40;
     }
+
+    @Override
+    public int getCraftingMaterialQuantity()
+    {
+        return 2;
+    }
 }

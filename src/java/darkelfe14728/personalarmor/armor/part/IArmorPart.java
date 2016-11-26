@@ -4,7 +4,7 @@ package darkelfe14728.personalarmor.armor.part;
 /**
  * @author Julien Rosset
  * 
- *         Generic armor part.
+ * Generic armor part.
  */
 public interface IArmorPart
 {
@@ -14,9 +14,15 @@ public interface IArmorPart
     public String getName();
 
     /**
-     * @return Base value for item values (Space, Weight, Energy)
+     * @return Base factor for item values.
      */
     public int getBaseFactor();
+    
+    /**
+     * @return The number of crafting material to use in crafting.
+     * @see IMaterial.getCraftingMaterial
+     */
+    public int getCraftingMaterialQuantity();
 
-    // public boolean isModuleApplicable()
+    //public boolean isModuleApplicable(IModule module)
 }

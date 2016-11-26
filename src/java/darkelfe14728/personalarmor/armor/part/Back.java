@@ -22,4 +22,10 @@ public class Back
     {
         return 150;
     }
+
+    @Override
+    public int getCraftingMaterialQuantity()
+    {
+        return 10;
+    }
 }

@@ -22,4 +22,10 @@ public class Chest
     {
         return 100;
     }
+
+    @Override
+    public int getCraftingMaterialQuantity()
+    {
+        return 8;
+    }
 }

@@ -25,4 +25,10 @@ public abstract class AbstractLegUp
     {
         return 60;
     }
+
+    @Override
+    public int getCraftingMaterialQuantity()
+    {
+        return 4;
+    }
 }

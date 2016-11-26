@@ -22,4 +22,10 @@ public class Head
     {
         return 50;
     }
+
+    @Override
+    public int getCraftingMaterialQuantity()
+    {
+        return 5;
+    }
 }

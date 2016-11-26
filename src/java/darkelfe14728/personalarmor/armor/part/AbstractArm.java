@@ -25,4 +25,10 @@ public abstract class AbstractArm
     {
         return 60;
     }
+
+    @Override
+    public int getCraftingMaterialQuantity()
+    {
+        return 4;
+    }
 }

@@ -25,4 +25,10 @@ public abstract class AbstractFoot
     {
         return 40;
     }
+
+    @Override
+    public int getCraftingMaterialQuantity()
+    {
+        return 2;
+    }
 }

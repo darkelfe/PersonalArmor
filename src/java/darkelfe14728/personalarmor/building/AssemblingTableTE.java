@@ -348,7 +348,4 @@ public class AssemblingTableTE
         this.processOutput.writeToNBT(process);
         compound.setTag(TAG_PROCESS, process);
     }
-
-
-
 }

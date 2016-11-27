@@ -17,9 +17,30 @@ item.armor.schematic.legdown_left.name=Schéma de cuisse gauche d'armure
 item.armor.schematic.legdown_right.name=Schéma de cuisse droitee d'armure
 item.armor.schematic.legup_left.name=Schéma de tibia gauche d'armure
 item.armor.schematic.legup_right.name=Schéma de tibia droit d'armure
+item.armor.armor.name=Armure
+item.armor.armor.arm_left.name=Bras gauche d'armure
+item.armor.armor.arm_right.name=Bras droit d'armure
+item.armor.armor.back.name=Dos d'armure
+item.armor.armor.belt.name=Ceinture d'armure
+item.armor.armor.chest.name=Torse d'armure
+item.armor.armor.foot_left.name=Pied gauche d'armure
+item.armor.armor.foot_right.name=Pied droit d'armure
+item.armor.armor.forearm_left.name=Avant-bras gauche d'armure
+item.armor.armor.forearm_right.name=Avant-bras droit d'armure
+item.armor.armor.hand_left.name=Main gauche d'armure
+item.armor.armor.hand_right.name=Bras droite d'armure
+item.armor.armor.head.name=Tête d'armure
+item.armor.armor.legdown_left.name=Cuisse gauche d'armure
+item.armor.armor.legdown_right.name=Cuisse droitee d'armure
+item.armor.armor.legup_left.name=Tibia gauche d'armure
+item.armor.armor.legup_right.name=Tibia droit d'armure
 
 tile.building.designTable.name=Table à dessin
+tile.building.assemblingTable=Table d'assemblage
 
 container.building.designTable=Table à dessin
+container.building.assemblingTable=Table d'assemblage
+
+material.armor.leather=Cuir
 
 interface.material=Matériau

@@ -28,8 +28,8 @@ public class AssemblingTable
     {        
         super(Material.rock);
 
-        this.setBlockName(BuildingModule.instance.getNamePrefix() + DesignTable.UNLOCALIZED_NAME);
-        this.setBlockTextureName(BuildingModule.instance.getTexturePrefix() + DesignTable.UNLOCALIZED_NAME);
+        this.setBlockName(BuildingModule.instance.getNamePrefix() + UNLOCALIZED_NAME);
+        this.setBlockTextureName(BuildingModule.instance.getTexturePrefix() + UNLOCALIZED_NAME);
         this.setCreativeTab(PersonalArmorTab.instance);
         this.setHardness(1.0F);
         this.setResistance(10F);
@@ -65,7 +65,7 @@ public class AssemblingTable
     {
         if(!world.isRemote)
         {
-            player.openGui(PersonalArmor.instance, DesignTableGui.GUI_ID, world, x, y, z);
+            player.openGui(PersonalArmor.instance, AssemblingTableGui.GUI_ID, world, x, y, z);
             return true;
         }
 

@@ -3,6 +3,9 @@ package darkelfe14728.personalarmor;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.network.IGuiHandler;
+import darkelfe14728.personalarmor.building.AssemblingTableContainer;
+import darkelfe14728.personalarmor.building.AssemblingTableGui;
+import darkelfe14728.personalarmor.building.AssemblingTableTE;
 import darkelfe14728.personalarmor.building.DesignTableContainer;
 import darkelfe14728.personalarmor.building.DesignTableGui;
 import darkelfe14728.personalarmor.building.DesignTableTE;
@@ -29,6 +32,9 @@ public class GuiHandler
         {
             case DesignTableGui.GUI_ID:
                 return new DesignTableContainer((DesignTableTE)world.getTileEntity(x, y, z), player.inventory);
+                
+            case AssemblingTableGui.GUI_ID:
+                return new AssemblingTableContainer((AssemblingTableTE)world.getTileEntity(x, y, z), player.inventory);
         }
 
         return null;
@@ -44,6 +50,9 @@ public class GuiHandler
         {
             case DesignTableGui.GUI_ID:
                 return new DesignTableGui((DesignTableTE)world.getTileEntity(x, y, z), player.inventory);
+
+            case AssemblingTableGui.GUI_ID:
+                return new AssemblingTableGui((AssemblingTableTE)world.getTileEntity(x, y, z), player.inventory);
         }
 
         return null;

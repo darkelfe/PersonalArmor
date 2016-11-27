@@ -10,6 +10,7 @@ import darkelfe14728.personalarmor.armor.ArmorModule;
 import darkelfe14728.personalarmor.armor.ArmorSchematicItem;
 import darkelfe14728.personalarmor.armor.material.IMaterial;
 import darkelfe14728.personalarmor.armor.part.IArmorPart;
+import darkelfe14728.personalarmor.utils.LogHelper;
 import darkelfe14728.personalarmor.utils.custom.IInventoryCustom;
 
 
@@ -55,11 +56,15 @@ public class AssemblingTableTE
     /**
      * Current processed time.
      */
-    private int processTime;
+    public int processTime;
     /**
      * The armor item that will appears in output slot (when process end).
      */
     private ItemStack processOutput;
+    /**
+     * The total process time for processOutput.
+     */
+    public int processOutputTime;
 
     public AssemblingTableTE()
     {
@@ -85,6 +90,7 @@ public class AssemblingTableTE
                     this.setInventorySlotContents(SLOT_OUTPUT, this.processOutput);
                     this.processTime = 0;
                     this.processOutput = null;
+                    this.processOutputTime = 0;
                     
                     update = true;
                 }
@@ -100,15 +106,25 @@ public class AssemblingTableTE
     /**
      * @return Total process time for current process output.
      */
-    private int calculateProcessTime()
+    public int calculateProcessTime()
     {
+        if(this.processOutput == null)
+        {
+            LogHelper.info("Ouput process is null !!!");
+            return 0;
+        }
+        
         IArmorPart part     = ArmorItem.getArmorPart(this.processOutput);
         IMaterial  material = ArmorItem.getMaterial(this.processOutput);
         
         if(part == null || material == null)
+        {
+            LogHelper.info("Missing part (" + (part == null) + ") or material (" + (material == null) + ")");
             return 0;
+        }
         
-        return part.getBaseFactor() * material.getAssemblingFactor();
+        this.processOutputTime = part.getBaseFactor() * material.getAssemblingFactor();
+        return this.processOutputTime;
     }
     /**
      * Start process (consume input).
@@ -163,6 +179,7 @@ public class AssemblingTableTE
         
         // All is OK, so consuming input
         this.processOutput = output_theory;
+        this.processTime++;
         this.decrStackSize(SLOT_INPUT_MATERIAL, part.getCraftingMaterialQuantity());
         
         return true;
@@ -345,7 +362,8 @@ public class AssemblingTableTE
 
         NBTTagCompound process = new NBTTagCompound();
         process.setShort(TAG_PROCESS_TIME, (short)this.processTime);
-        this.processOutput.writeToNBT(process);
+        if(this.processOutput != null)
+            this.processOutput.writeToNBT(process);
         compound.setTag(TAG_PROCESS, process);
     }
 }

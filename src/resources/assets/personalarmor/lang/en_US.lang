@@ -17,9 +17,30 @@ item.armor.schematic.legdown_left.name=Left leg (down part) armor schematic
 item.armor.schematic.legdown_right.name=Right leg (down part) armor schematic
 item.armor.schematic.legup_left.name=Left leg (up part) armor schematic
 item.armor.schematic.legup_right.name=Right leg (up part) armor schematic
+item.armor.armor.name=Armor
+item.armor.armor.arm_left.name=Left arm armor
+item.armor.armor.arm_right.name=Right arm armor
+item.armor.armor.back.name=Back armor
+item.armor.armor.belt.name=Belt armor
+item.armor.armor.chest.name=Chest armor
+item.armor.armor.foot_left.name=Left foot armor
+item.armor.armor.foot_right.name=Right foot armor
+item.armor.armor.forearm_left.name=Left forearm armor
+item.armor.armor.forearm_right.name=Right forearm armor
+item.armor.armor.hand_left.name=Left hand armor
+item.armor.armor.hand_right.name=Right hand armor
+item.armor.armor.head.name=Head armor
+item.armor.armor.legdown_left.name=Left leg (down part) armor
+item.armor.armor.legdown_right.name=Right leg (down part) armor
+item.armor.armor.legup_left.name=Left leg (up part) armor
+item.armor.armor.legup_right.name=Right leg (up part) armor
 
 tile.building.designTable.name=Design Table
+tile.building.assemblingTable=Assembling Table
 
 container.building.designTable=Design Table
+container.building.assemblingTable=Assembling Table
+
+material.armor.leather=Leather (poor cow...)
 
 interface.material=Material

@@ -1,12 +1,14 @@
 package darkelfe14728.personalarmor.building;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
+import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import darkelfe14728.personalarmor.utils.InventoryHelper;
-import darkelfe14728.personalarmor.utils.custom.ISlotPickup;
 import darkelfe14728.personalarmor.utils.custom.SlotCustom;
 
 
@@ -17,25 +19,30 @@ import darkelfe14728.personalarmor.utils.custom.SlotCustom;
  * 
  * @see DesignTable
  */
-public class DesignTableContainer
+public class AssemblingTableContainer
     extends Container
-    implements ISlotPickup
 {
     private static final int SLOT_START = 0;
-    private static final int SLOT_STOP  = DesignTableContainer.SLOT_START + DesignTableTE.INVENTORY_SIZE - 1;
+    private static final int SLOT_STOP  = AssemblingTableContainer.SLOT_START + DesignTableTE.INVENTORY_SIZE - 1;
+    
+    private static final int TYPE_PROCESS_TIME        = 0;
+    private static final int TYPE_PROCESS_OUTPUT_TIME = 1;
 
-    private final DesignTableTE tile;
+    private AssemblingTableTE tile;
+    private int lastProcessTime;
+    private int lastProcessOutputTime;
 
     /**
      * New GUI-Container
      */
-    public DesignTableContainer(DesignTableTE tile, IInventory playerInventory)
+    public AssemblingTableContainer(AssemblingTableTE tile, IInventory playerInventory)
     {
         this.tile = tile;
 
-        // Design Table
-        this.addSlotToContainer(new SlotCustom(this.tile, DesignTableTE.SLOT_INPUT_PAPER, 17, 53, this));
-        this.addSlotToContainer(new SlotCustom(this.tile, DesignTableTE.SLOT_OUTPUT, 143, 53, this));
+        // Assembling Table
+        this.addSlotToContainer(new SlotCustom(this.tile, AssemblingTableTE.SLOT_INPUT_SCHEMATIC,  80, 48));
+        this.addSlotToContainer(new SlotCustom(this.tile, AssemblingTableTE.SLOT_INPUT_MATERIAL ,  17, 34));
+        this.addSlotToContainer(new SlotCustom(this.tile, AssemblingTableTE.SLOT_OUTPUT         , 143, 34));
 
         // Inventory
         for(int line = 0; line < InventoryHelper.Constants.INVENTORY.NB_LINES; line++)
@@ -43,7 +50,7 @@ public class DesignTableContainer
             for(int column = 0; column < InventoryHelper.Constants.INVENTORY.NB_COLUMNS; column++)
             {
                 this.addSlotToContainer(new Slot(playerInventory, InventoryHelper.Constants.INVENTORY.SLOT_START + line * InventoryHelper.Constants.INVENTORY.NB_COLUMNS + column,
-                        DesignTableGui.GUI_INV_OFFSET_H + column * InventoryHelper.Constants.INVENTORY.SLOT_OFFSET_H + 1, DesignTableGui.GUI_INV_OFFSET_V + line
+                        AssemblingTableGui.GUI_INV_OFFSET_H + column * InventoryHelper.Constants.INVENTORY.SLOT_OFFSET_H + 1, AssemblingTableGui.GUI_INV_OFFSET_V + line
                                 * InventoryHelper.Constants.INVENTORY.SLOT_OFFSET_V + 1));
             }
         }
@@ -54,26 +61,54 @@ public class DesignTableContainer
             for(int column = 0; column < InventoryHelper.Constants.HOTBAR.NB_COLUMNS; column++)
             {
                 this.addSlotToContainer(new Slot(playerInventory, InventoryHelper.Constants.HOTBAR.SLOT_START + line * InventoryHelper.Constants.HOTBAR.NB_COLUMNS + column,
-                        DesignTableGui.GUI_HOTBAR_OFFSET_H + column * InventoryHelper.Constants.HOTBAR.SLOT_OFFSET_H + 1, DesignTableGui.GUI_HOTBAR_OFFSET_V + line
+                        AssemblingTableGui.GUI_HOTBAR_OFFSET_H + column * InventoryHelper.Constants.HOTBAR.SLOT_OFFSET_H + 1, AssemblingTableGui.GUI_HOTBAR_OFFSET_V + line
                                 * InventoryHelper.Constants.HOTBAR.SLOT_OFFSET_V + 1));
             }
         }
     }
 
-    public void setOuput(ItemStack output)
+    @Override
+    public void addCraftingToCrafters(ICrafting craft)
     {
-        if(output == null)
-            return;
-
-        this.tile.setInventorySlotContents(DesignTableTE.SLOT_OUTPUT, output);
+        super.addCraftingToCrafters(craft);
+        craft.sendProgressBarUpdate(this, TYPE_PROCESS_TIME       , this.tile.processTime);
+        craft.sendProgressBarUpdate(this, TYPE_PROCESS_OUTPUT_TIME, this.tile.processOutputTime);
     }
     @Override
-    public void onSlotPickup(EntityPlayer player, int index, ItemStack stack)
+    public void detectAndSendChanges()
     {
-        if(index == DesignTableTE.SLOT_OUTPUT)
-            this.tile.decrStackSize(DesignTableTE.SLOT_INPUT_PAPER, stack.stackSize);
+        super.detectAndSendChanges();
+        
+        for(int curr = 0; curr < this.crafters.size(); curr++)
+        {
+            ICrafting craft = (ICrafting)this.crafters.get(curr);
+            
+            if(this.lastProcessTime != this.tile.processTime)
+                craft.sendProgressBarUpdate(this, TYPE_PROCESS_TIME, this.tile.processTime);
+            
+            if(this.lastProcessOutputTime != this.tile.processTime)
+                craft.sendProgressBarUpdate(this, TYPE_PROCESS_OUTPUT_TIME, this.tile.processOutputTime);
+        }
+        
+        this.lastProcessTime = this.tile.processTime;
+        this.lastProcessOutputTime = this.tile.processOutputTime;
     }
-
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void updateProgressBar(int type, int value)
+    {        
+        switch(type)
+        {
+            case TYPE_PROCESS_TIME:
+                this.tile.processTime = value;
+                break;
+                
+            case TYPE_PROCESS_OUTPUT_TIME:
+                this.tile.processOutputTime = value;
+                break;
+        }
+    }
+    
     @Override
     public boolean canInteractWith(EntityPlayer player)
     {
@@ -91,17 +126,17 @@ public class DesignTableContainer
             ItemStack current = slot.getStack();
             stack = current.copy();
 
-            if(DesignTableContainer.SLOT_START <= fromSlot && fromSlot <= DesignTableContainer.SLOT_STOP)
+            if(AssemblingTableContainer.SLOT_START <= fromSlot && fromSlot <= AssemblingTableContainer.SLOT_STOP)
             {
                 // Design Table => Player Inventory
-                if(!this.mergeItemStack(current, InventoryHelper.Constants.HOTBAR.SLOT_START + DesignTableContainer.SLOT_STOP, InventoryHelper.Constants.INVENTORY.SLOT_STOP
-                        + DesignTableContainer.SLOT_STOP, false))
+                if(!this.mergeItemStack(current, InventoryHelper.Constants.HOTBAR.SLOT_START + AssemblingTableContainer.SLOT_STOP, InventoryHelper.Constants.INVENTORY.SLOT_STOP
+                        + AssemblingTableContainer.SLOT_STOP, false))
                     return null;
             }
             else
             {
                 // Player Inventory => Design Table
-                if(!this.mergeItemStack(current, DesignTableContainer.SLOT_START, DesignTableContainer.SLOT_STOP, false))
+                if(!this.mergeItemStack(current, AssemblingTableContainer.SLOT_START, AssemblingTableContainer.SLOT_STOP, false))
                     return null;
             }
 

@@ -25,7 +25,8 @@ public class BuildingModule
 
     public static class Blocks
     {
-        public static final Block designTable = new DesignTable();
+        public static final Block     designTable = new     DesignTable();
+        public static final Block assemblingTable = new AssemblingTable();
     }
 
     @Override
@@ -39,7 +40,8 @@ public class BuildingModule
     {
         LogHelper.startBlock(BuildingModule.MODULE_NAME);
 
-        RegistryHelper.registerBlockWithTileEntity(Blocks.designTable, DesignTableTE.class);
+        RegistryHelper.registerBlockWithTileEntity(Blocks.    designTable,     DesignTableTE.class);
+        RegistryHelper.registerBlockWithTileEntity(Blocks.assemblingTable, AssemblingTableTE.class);
 
         LogHelper.stopBlock();
     }
@@ -48,7 +50,23 @@ public class BuildingModule
     {
         LogHelper.startBlock(BuildingModule.MODULE_NAME);
 
-        RegistryHelper.registerBlockRecipe(Blocks.designTable, new Object[] {"FI", "C ", 'F', Items.feather, 'I', DyeColor.BLACK.getItem(), 'C', net.minecraft.init.Blocks.crafting_table});
+        RegistryHelper.registerBlockRecipe(Blocks.designTable, new Object[] {
+                "FI", 
+                "C ",
+                
+                'F', Items.feather, 
+                'I', DyeColor.BLACK.getItem(), 
+                'C', net.minecraft.init.Blocks.crafting_table
+        });
+        RegistryHelper.registerBlockRecipe(Blocks.assemblingTable, new Object[] {
+                "TST", 
+                "SCS", 
+                "TST",
+                
+                'T', Items.stick, 
+                'S', net.minecraft.init.Blocks.stone, 
+                'C', net.minecraft.init.Blocks.crafting_table
+        });
 
         LogHelper.stopBlock();
     }

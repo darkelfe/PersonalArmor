@@ -105,6 +105,9 @@ public abstract class InventoryHelper
      */
     public static void dropInWorld(World world, double x, double y, double z, ItemStack stack)
     {
+        if(stack == null)
+            return;
+        
         Random rand = new Random();
 
         double offset_x = rand.nextFloat() * 0.8F + 0.1F;

@@ -28,7 +28,7 @@ public class DesignTableGui
 {
     public static final int GUI_ID = 0;
 
-    public static final int GUI_WIDTH  = 175;
+    public static final int GUI_WIDTH  = 176;
     public static final int GUI_HEIGHT = 222;
 
     public static final int GUI_INV_OFFSET_H    = 7;
@@ -90,7 +90,7 @@ public class DesignTableGui
     protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY)
     {
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-        this.mc.getTextureManager().bindTexture(new ResourceLocation(BuildingModule.instance.getGuiTexturePrefix() + "designTable.png"));
+        this.mc.getTextureManager().bindTexture(new ResourceLocation(BuildingModule.instance.getGuiTexturePrefix() + DesignTable.UNLOCALIZED_NAME + ".png"));
         this.drawTexturedModalRect(this.guiLeft, this.guiTop, 0, 0, this.xSize, this.ySize);
     }
     @Override

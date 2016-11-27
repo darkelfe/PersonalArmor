@@ -64,7 +64,7 @@ public class ArmorItem
         
         IMaterial material = getMaterial(stack);
         if(material != null)
-            material_str = StatCollector.translateToLocal("material." + super.getUnlocalizedName(stack));
+            material_str = StatCollector.translateToLocal("material." + ArmorModule.instance.getNamePrefix() + material.getName());
         
         textList.add(StatCollector.translateToLocal("interface.material") + " : " + material_str);
     }

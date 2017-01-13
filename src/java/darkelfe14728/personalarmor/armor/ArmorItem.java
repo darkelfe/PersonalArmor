@@ -23,6 +23,7 @@ import net.minecraft.util.StatCollector;
 /**
  * @author Julien Rosset
  *
+ * An armor (part) item.
  */
 public class ArmorItem
     extends Item
@@ -158,20 +159,27 @@ public class ArmorItem
     
     public static IArmorPart getArmorPart(ItemStack stack)
     {
-        if(!stack.hasTagCompound())
+        NBTTagCompound data = getNBTGroup(stack);
+        if(data == null)
             return null;
         
-        NBTTagCompound data = stack.getTagCompound();
-        if(!data.hasKey(NBT_GROUP))
-            return null;
-        
-        data = data.getCompoundTag(NBT_GROUP);
         if(!data.hasKey(NBT_PART))
             return null;
         
         return ArmorModule.Parts.getValue(data.getString(NBT_PART));
     }
     public static IMaterial getMaterial(ItemStack stack)
+    {
+        NBTTagCompound data = getNBTGroup(stack);
+        if(data == null)
+            return null;
+        
+        if(!data.hasKey(NBT_MATERIAL))
+            return null;
+        
+        return ArmorModule.Materials.getValue(data.getString(NBT_MATERIAL));
+    }
+    private static NBTTagCompound getNBTGroup(ItemStack stack)
     {
         if(!stack.hasTagCompound())
             return null;
@@ -180,10 +188,6 @@ public class ArmorItem
         if(!data.hasKey(NBT_GROUP))
             return null;
         
-        data = data.getCompoundTag(NBT_GROUP);
-        if(!data.hasKey(NBT_MATERIAL))
-            return null;
-        
-        return ArmorModule.Materials.getValue(data.getString(NBT_MATERIAL));
+        return data.getCompoundTag(NBT_GROUP);
     }
 }

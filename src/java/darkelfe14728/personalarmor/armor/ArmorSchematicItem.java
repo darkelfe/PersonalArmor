@@ -20,7 +20,7 @@ import darkelfe14728.personalarmor.armor.part.IArmorPart;
 /**
  * @author Julien Rosset
  * 
- *         An armor (part) schematic
+ * An armor (part) schematic
  */
 public class ArmorSchematicItem
     extends Item
@@ -126,17 +126,24 @@ public class ArmorSchematicItem
     
     public static IArmorPart getArmorPart(ItemStack stack)
     {
-        if(!stack.hasTagCompound())
+        NBTTagCompound data = getNBTGroup(stack);
+        if(data == null)
             return null;
         
-        NBTTagCompound data = stack.getTagCompound();
-        if(!data.hasKey(ArmorSchematicItem.NBT_GROUP))
-            return null;
-        
-        data = data.getCompoundTag(ArmorSchematicItem.NBT_GROUP);
         if(!data.hasKey(ArmorSchematicItem.NBT_PART))
             return null;
         
         return ArmorModule.Parts.getValue(data.getString(ArmorSchematicItem.NBT_PART));
+    }
+    private static NBTTagCompound getNBTGroup(ItemStack stack)
+    {
+        if(!stack.hasTagCompound())
+            return null;
+        
+        NBTTagCompound data = stack.getTagCompound();
+        if(!data.hasKey(NBT_GROUP))
+            return null;
+        
+        return data.getCompoundTag(NBT_GROUP);
     }
 }

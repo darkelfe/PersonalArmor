@@ -1,4 +1,4 @@
-package darkelfe14728.personalarmor.utils;
+package darkelfe14728.personalarmor.core.utils;
 
 /**
  * @author Julien Rosset

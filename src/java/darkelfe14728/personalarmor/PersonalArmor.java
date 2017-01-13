@@ -12,8 +12,8 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
-import darkelfe14728.personalarmor.utils.LogHelper;
-import darkelfe14728.personalarmor.utils.proxy.CommonProxy;
+import darkelfe14728.personalarmor.core.LogHelper;
+import darkelfe14728.personalarmor.core.proxy.CommonProxy;
 
 
 /**

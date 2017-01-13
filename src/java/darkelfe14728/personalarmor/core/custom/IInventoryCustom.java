@@ -1,4 +1,4 @@
-package darkelfe14728.personalarmor.utils.custom;
+package darkelfe14728.personalarmor.core.custom;
 
 import net.minecraft.inventory.IInventory;
 

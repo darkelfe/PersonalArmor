@@ -14,8 +14,8 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import darkelfe14728.personalarmor.PersonalArmor;
 import darkelfe14728.personalarmor.PersonalArmorTab;
-import darkelfe14728.personalarmor.utils.BlockFace;
-import darkelfe14728.personalarmor.utils.InventoryHelper;
+import darkelfe14728.personalarmor.core.InventoryHelper;
+import darkelfe14728.personalarmor.core.utils.BlockFace;
 
 
 /**

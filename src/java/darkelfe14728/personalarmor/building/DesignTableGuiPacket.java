@@ -7,8 +7,8 @@ import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.network.ByteBufUtils;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
-import darkelfe14728.personalarmor.utils.LogHelper;
-import darkelfe14728.personalarmor.utils.network.AbstractServerMessageHandler;
+import darkelfe14728.personalarmor.core.LogHelper;
+import darkelfe14728.personalarmor.core.network.AbstractServerMessageHandler;
 
 
 /**

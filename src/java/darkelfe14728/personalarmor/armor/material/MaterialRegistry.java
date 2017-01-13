@@ -1,6 +1,6 @@
 package darkelfe14728.personalarmor.armor.material;
 
-import darkelfe14728.personalarmor.utils.registry.AbstractRegistry;
+import darkelfe14728.personalarmor.core.registry.AbstractRegistry;
 
 /**
  * @author Julien Rosset

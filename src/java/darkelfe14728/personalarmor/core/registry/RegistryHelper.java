@@ -1,4 +1,4 @@
-package darkelfe14728.personalarmor.utils.registry;
+package darkelfe14728.personalarmor.core.registry;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -6,9 +6,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.registry.GameRegistry;
-import darkelfe14728.personalarmor.utils.LogHelper;
-import darkelfe14728.personalarmor.utils.network.AbstractMessageHandler;
-import darkelfe14728.personalarmor.utils.network.PacketDispatcher;
+import darkelfe14728.personalarmor.core.LogHelper;
+import darkelfe14728.personalarmor.core.network.AbstractMessageHandler;
+import darkelfe14728.personalarmor.core.network.PacketDispatcher;
 
 
 /**

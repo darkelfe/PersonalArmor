@@ -2,7 +2,7 @@ package darkelfe14728.personalarmor.building;
 
 import darkelfe14728.personalarmor.PersonalArmor;
 import darkelfe14728.personalarmor.PersonalArmorTab;
-import darkelfe14728.personalarmor.utils.InventoryHelper;
+import darkelfe14728.personalarmor.core.InventoryHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;

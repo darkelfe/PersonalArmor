@@ -1,4 +1,4 @@
-package darkelfe14728.personalarmor.utils.proxy;
+package darkelfe14728.personalarmor.core.proxy;
 
 import net.minecraft.entity.player.EntityPlayer;
 import cpw.mods.fml.common.event.FMLInitializationEvent;

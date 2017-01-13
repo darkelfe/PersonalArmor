@@ -13,7 +13,7 @@ import darkelfe14728.personalarmor.armor.ArmorModule;
 import darkelfe14728.personalarmor.armor.ArmorSchematicItem;
 import darkelfe14728.personalarmor.armor.part.ArmorPartRegistry;
 import darkelfe14728.personalarmor.armor.part.IArmorPart;
-import darkelfe14728.personalarmor.utils.network.PacketDispatcher;
+import darkelfe14728.personalarmor.core.network.PacketDispatcher;
 
 
 /**

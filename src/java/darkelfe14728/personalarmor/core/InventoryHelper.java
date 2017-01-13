@@ -1,4 +1,4 @@
-package darkelfe14728.personalarmor.utils;
+package darkelfe14728.personalarmor.core;
 
 import java.util.Random;
 

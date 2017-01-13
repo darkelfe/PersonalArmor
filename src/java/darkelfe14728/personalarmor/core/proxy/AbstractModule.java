@@ -1,4 +1,4 @@
-package darkelfe14728.personalarmor.utils.proxy;
+package darkelfe14728.personalarmor.core.proxy;
 
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;

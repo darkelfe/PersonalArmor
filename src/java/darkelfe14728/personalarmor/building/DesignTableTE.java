@@ -7,7 +7,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import darkelfe14728.personalarmor.armor.ArmorModule;
-import darkelfe14728.personalarmor.utils.custom.IInventoryCustom;
+import darkelfe14728.personalarmor.core.custom.IInventoryCustom;
 
 
 /**

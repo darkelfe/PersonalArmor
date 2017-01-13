@@ -5,9 +5,9 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import darkelfe14728.personalarmor.utils.InventoryHelper;
-import darkelfe14728.personalarmor.utils.custom.ISlotPickup;
-import darkelfe14728.personalarmor.utils.custom.SlotCustom;
+import darkelfe14728.personalarmor.core.InventoryHelper;
+import darkelfe14728.personalarmor.core.custom.ISlotPickup;
+import darkelfe14728.personalarmor.core.custom.SlotCustom;
 
 
 /**

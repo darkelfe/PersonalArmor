@@ -1,4 +1,4 @@
-package darkelfe14728.personalarmor.utils.registry;
+package darkelfe14728.personalarmor.core.registry;
 
 import java.util.Iterator;
 import java.util.Map;

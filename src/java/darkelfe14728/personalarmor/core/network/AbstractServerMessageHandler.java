@@ -1,4 +1,4 @@
-package darkelfe14728.personalarmor.utils.network;
+package darkelfe14728.personalarmor.core.network;
 
 import net.minecraft.entity.player.EntityPlayer;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
@@ -10,16 +10,17 @@ import cpw.mods.fml.relauncher.SideOnly;
 /**
  * @author Julien Rosset
  * 
- *         Generic handler for client side messages.
+ *         Generic handler for server side messages.
  */
-public abstract class AbstractClientMessageHandler<T extends IMessage>
+public abstract class AbstractServerMessageHandler<T extends IMessage>
     extends AbstractMessageHandler<T>
 {
+
     @Override
-    @SideOnly(Side.SERVER)
-    public IMessage onServerMessage(EntityPlayer player, T message, MessageContext context)
+    @SideOnly(Side.CLIENT)
+    public IMessage onClientMessage(EntityPlayer player, T message, MessageContext context)
     {
-        // Client side only, so do nothing in case of server side
+        // Server side only, so do nothing in case of client side
         return null;
     }
 }

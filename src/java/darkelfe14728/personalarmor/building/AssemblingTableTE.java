@@ -10,8 +10,8 @@ import darkelfe14728.personalarmor.armor.ArmorModule;
 import darkelfe14728.personalarmor.armor.ArmorSchematicItem;
 import darkelfe14728.personalarmor.armor.material.IMaterial;
 import darkelfe14728.personalarmor.armor.part.IArmorPart;
-import darkelfe14728.personalarmor.utils.LogHelper;
-import darkelfe14728.personalarmor.utils.custom.IInventoryCustom;
+import darkelfe14728.personalarmor.core.LogHelper;
+import darkelfe14728.personalarmor.core.custom.IInventoryCustom;
 
 
 /**

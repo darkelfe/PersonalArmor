@@ -3,4 +3,4 @@
  * 
  * Utility classes about object registry.
  */
-package darkelfe14728.personalarmor.utils.registry;
+package darkelfe14728.personalarmor.core.registry;

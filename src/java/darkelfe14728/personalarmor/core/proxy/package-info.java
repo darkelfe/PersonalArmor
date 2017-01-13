@@ -3,4 +3,4 @@
  * 
  *         "Proxies" classes
  */
-package darkelfe14728.personalarmor.utils.proxy;
+package darkelfe14728.personalarmor.core.proxy;

@@ -1,6 +1,7 @@
 package darkelfe14728.personalarmor.armor;
 
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -9,6 +10,7 @@ import darkelfe14728.personalarmor.armor.part.ArmorPartRegistry;
 import darkelfe14728.personalarmor.core.LogHelper;
 import darkelfe14728.personalarmor.core.proxy.AbstractModule;
 import darkelfe14728.personalarmor.core.registry.RegistryHelper;
+import darkelfe14728.personalarmor.core.utils.ArmorType;
 
 
 /**
@@ -29,6 +31,11 @@ public class ArmorModule
     {
         public static final Item ArmorSchematicItem = new ArmorSchematicItem();
         public static final Item ArmorItem          = new ArmorItem();
+        
+        public static final Item ArmorWornHelmet     = new ArmorWornItem(ArmorType.HELMET    );
+        public static final Item ArmorWornChestplate = new ArmorWornItem(ArmorType.CHESTPLATE);
+        public static final Item ArmorWornLeggings   = new ArmorWornItem(ArmorType.LEGGINGS  );
+        public static final Item ArmorWornBoots      = new ArmorWornItem(ArmorType.BOOTS     );
     }
 
     @Override
@@ -49,6 +56,37 @@ public class ArmorModule
         LogHelper.startBlock(ArmorModule.MODULE_NAME);
         RegistryHelper.registerItem(Items.ArmorSchematicItem);
         RegistryHelper.registerItem(Items.ArmorItem);
+        
+        RegistryHelper.registerItem(Items.ArmorWornHelmet);
+        RegistryHelper.registerRecipe(new ItemStack(Items.ArmorWornHelmet, 1), new Object[] {
+            "SSS", 
+            "S S",
+            
+            'S', net.minecraft.init.Items.stick
+        });
+        RegistryHelper.registerItem(Items.ArmorWornChestplate);
+        RegistryHelper.registerRecipe(new ItemStack(Items.ArmorWornChestplate, 1), new Object[] {
+            "S S", 
+            "SSS",
+            "SSS",
+            
+            'S', net.minecraft.init.Items.stick
+        });
+        RegistryHelper.registerItem(Items.ArmorWornLeggings);
+        RegistryHelper.registerRecipe(new ItemStack(Items.ArmorWornLeggings, 1), new Object[] {
+            "SSS", 
+            "S S",
+            "S S",
+            
+            'S', net.minecraft.init.Items.stick
+        });
+        RegistryHelper.registerItem(Items.ArmorWornBoots);
+        RegistryHelper.registerRecipe(new ItemStack(Items.ArmorWornBoots, 1), new Object[] {
+            "S S", 
+            "S S",
+            
+            'S', net.minecraft.init.Items.stick
+        });
         LogHelper.stopBlock();
     }
     @Override

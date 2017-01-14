@@ -69,7 +69,7 @@ public class ArmorSchematicItem
         this.icons = new Hashtable<>(ArmorModule.Parts.size());
         
         for(IArmorPart part : ArmorModule.Parts.getValues())
-            this.icons.put(part.getName(), register.registerIcon(this.getIconString() + "_" + part.getName()));
+            this.icons.put(part.getName(), register.registerIcon(this.getIconString() + "/" + part.getName()));
     }
     @Override
     @SideOnly(Side.CLIENT)

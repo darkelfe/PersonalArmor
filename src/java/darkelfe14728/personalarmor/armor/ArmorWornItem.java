@@ -4,6 +4,7 @@ import java.util.List;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import darkelfe14728.personalarmor.PersonalArmor;
 import darkelfe14728.personalarmor.core.utils.ArmorType;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -50,6 +51,6 @@ public class ArmorWornItem
     @Override
     public String getArmorTexture(ItemStack stack, Entity entity, int slot, String type)
     {
-        return ArmorModule.instance.getTexturePrefix() + UNLOCALIZED_NAME + "/layer_" + (this.armorType == 2 ? "2" : "1") + ".png";
+        return PersonalArmor.MOD_ID + ":textures/items/" + ArmorModule.instance.getPrefix() + "/" + UNLOCALIZED_NAME + "/layer_" + (this.armorType == 2 ? "2" : "1") + ".png";
     }
 }

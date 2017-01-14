@@ -44,3 +44,4 @@ container.building.assemblingTable=Table d'assemblage
 material.armor.leather=Cuir
 
 interface.material=Matériau
+interface.armor.worn.description="Portez-les pour activer PersonalArmor"

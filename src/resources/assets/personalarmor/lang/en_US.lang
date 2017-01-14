@@ -44,3 +44,4 @@ container.building.assemblingTable=Assembling Table
 material.armor.leather=Leather (poor cow...)
 
 interface.material=Material
+interface.armor.worn.description="Wear it to enable PersonalArmor parts"

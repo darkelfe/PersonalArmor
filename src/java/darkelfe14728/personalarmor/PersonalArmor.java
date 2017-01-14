@@ -37,8 +37,8 @@ public class PersonalArmor
     @Instance
     public static PersonalArmor      instance        = new PersonalArmor();
     @SidedProxy(
-        clientSide = "darkelfe14728.personalarmor.utils.proxy.CombinedClientProxy",
-        serverSide = "darkelfe14728.personalarmor.utils.proxy.DedicatedServerProxy")
+        clientSide = "darkelfe14728.personalarmor.core.proxy.CombinedClientProxy",
+        serverSide = "darkelfe14728.personalarmor.core.proxy.DedicatedServerProxy")
     public static CommonProxy        proxy;
 
     @EventHandler

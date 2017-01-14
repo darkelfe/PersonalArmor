@@ -37,7 +37,7 @@ public class ArmorItem
     private Map<String, IIcon> icons = null;
 
     public ArmorItem()
-    {
+    {        
         this.setMaxStackSize(1);
         this.setHasSubtypes(true);
         this.setCreativeTab(PersonalArmorTab.instance);
@@ -96,7 +96,7 @@ public class ArmorItem
             for(IArmorPart part : parts)
                 this.icons.put(
                         part.getName() + "#" + material.getName(), 
-                        register.registerIcon(this.getIconString() + "_" + part.getName() + "_" + material.getName())
+                        register.registerIcon(this.getIconString() + "/" + material.getName() + "/" + part.getName())
                 );
     }
     @Override
